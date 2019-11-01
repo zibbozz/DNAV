@@ -16,9 +16,6 @@ Zur Zeit soll DNAV folgende Funktionen umfassen:
  - Eingabeaufforderung
  - Strg+Alt+Entf
 
-## Betriebssysteme
-DNAV soll durch das .NET Core Framework auf einem breiten Spektrum von Geräten lauffähig sein. Aktuell umfasst diese Kompatibilität Windows, Linux und OSX. Darunter fallen die Architekturen i386, x86-64 und ARM.
-
 ## Präferenzen
 Um das Projekt zu compilieren, wird Visual Studio 2019 mit installiertem .NET Core Modul vorausgesetzt.
 
