@@ -12,6 +12,9 @@ namespace DNAV_Trojaner
         private string _username;
         private string _password;
 
+        /// <summary>
+        /// Die URL der Website, für welche die Logindaten gelten.
+        /// </summary>
         public string Url
         {
             get
@@ -24,6 +27,9 @@ namespace DNAV_Trojaner
             }
         }
 
+        /// <summary>
+        /// Der Benutzername des Benutzerkontos
+        /// </summary>
         public string Username
         {
             get
@@ -36,6 +42,9 @@ namespace DNAV_Trojaner
             }
         }
 
+        /// <summary>
+        /// Das Passwort des Benutzerkontos
+        /// </summary>
         public string Password
         {
             get
@@ -48,6 +57,9 @@ namespace DNAV_Trojaner
             }
         }
 
+        /// <summary>
+        /// Setzt die Eigenschaften auf Standardwerte
+        /// </summary>
         public Credential()
         {
             this._url = "localhost";
@@ -55,6 +67,12 @@ namespace DNAV_Trojaner
             this._password = "";
         }
 
+        /// <summary>
+        /// Setzt die Eigenschaften bei der Erstellung des Objekts
+        /// </summary>
+        /// <param name="url">Die URL der Website</param>
+        /// <param name="username">Benutzername des Benutzers</param>
+        /// <param name="password">Passwort des Benutzers</param>
         public Credential(string url, string username, string password) : this()
         {
             this.Url = url;
