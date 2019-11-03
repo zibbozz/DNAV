@@ -1,6 +1,0 @@
-C:\Users\Niclas\Documents\Technischer Datenschutz\DNAV\DNAV_Trojaner\obj\Debug\DNAV_Trojaner.csprojAssemblyReference.cache
-C:\Users\Niclas\Documents\Technischer Datenschutz\DNAV\DNAV_Trojaner\bin\Debug\DNAV_Trojaner.exe.config
-C:\Users\Niclas\Documents\Technischer Datenschutz\DNAV\DNAV_Trojaner\bin\Debug\DNAV_Trojaner.exe
-C:\Users\Niclas\Documents\Technischer Datenschutz\DNAV\DNAV_Trojaner\bin\Debug\DNAV_Trojaner.pdb
-C:\Users\Niclas\Documents\Technischer Datenschutz\DNAV\DNAV_Trojaner\obj\Debug\DNAV_Trojaner.exe
-C:\Users\Niclas\Documents\Technischer Datenschutz\DNAV\DNAV_Trojaner\obj\Debug\DNAV_Trojaner.pdb
