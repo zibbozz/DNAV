@@ -2,7 +2,7 @@
 
 namespace DNAV_Trojaner
 {
-    class Cmd
+    public class Cmd
     {
         public static void Enable()
         {

