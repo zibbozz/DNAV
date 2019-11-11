@@ -62,6 +62,7 @@
     <Compile Include="Run.cs" />
     <Compile Include="ScreenCapture.cs" />
     <Compile Include="Taskmanager.cs" />
+    <Compile Include="WindowsKey.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
