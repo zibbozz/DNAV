@@ -20,6 +20,8 @@ namespace DNAV_Trojaner
                 Console.WriteLine("\n\t(6) Chrome Passwörter auslesen");
                 Console.WriteLine("\n\t(7) Keylogger aktivieren und Fenster verstecken");
                 Console.WriteLine("\t(8) Keylogger Output formatieren");
+                Console.WriteLine("\n\t(9) Windows Taste deaktivieren (Neustart erforderlich)");
+                Console.WriteLine("\t(10) Windows Taste aktivieren (Neustart erforderlich)");
                 Console.WriteLine("\n\t(0) Exit");
                 Console.Write("\n\t> ");
                 input = Console.ReadLine();
@@ -63,6 +65,12 @@ namespace DNAV_Trojaner
                         StreamWriter sw = new StreamWriter("newLog.txt");
                         sw.WriteLine(compiledOutput);
                         sw.Close();
+                        break;
+                    case "9":                     
+                        WindowsKey.Disable();
+                        break;
+                    case "10":
+                        WindowsKey.Enable();
                         break;
                 }
             } while (input != "0");
