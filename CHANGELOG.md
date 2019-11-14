@@ -2,6 +2,11 @@
 
 Im Verlauf der Entwicklung werden in dieser Datei die Änderungen in den einzelnen Versionen festgehalten. Die Versionsnummern folgen dem Prinzip der [semantischen Versionierung](https://semver.org)
 
+## [0.2.1] - 2019-11-14
+
+### Fixed
+- Missing reference to DNAV class
+
 ## [0.2.0] - 2019-11-14
 
 ### Added
