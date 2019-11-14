@@ -21,6 +21,9 @@ namespace DNAV_Trojaner
         private bool _disableTaskmanager;
         private bool _disableWindowsKey;
 
+        /// <summary>
+        /// Legt fest, ob das Konsolenfenster versteckt wird.
+        /// </summary>
         public bool Hide
         {
             get
@@ -34,7 +37,7 @@ namespace DNAV_Trojaner
         }
 
         /// <summary>
-        /// Legt fest, ob die Keylogger Funktion aktiviert und das Konsolenfenster versteckt wird.
+        /// Legt fest, ob die Keylogger Funktion aktiviert wird.
         /// </summary>
         public bool Keylogger
         {
