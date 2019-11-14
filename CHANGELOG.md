@@ -2,6 +2,19 @@
 
 Im Verlauf der Entwicklung werden in dieser Datei die Änderungen in den einzelnen Versionen festgehalten. Die Versionsnummern folgen dem Prinzip der [semantischen Versionierung](https://semver.org)
 
+## [0.2.0] - 2019-11-14
+
+### Added
+- Deaktivieren der Windows Taste
+- Autostart des Trojaners
+- Klasse zur einfachen verwaltung der zu verwendenden Module
+
+### Changed
+- Trojaner hat nun kein Startmenü mehr sondern startet mit allen Modulen
+
+### Removed
+- Startmenü
+
 ## [0.1.0] - 2019-11-08
 
 ### Added
@@ -11,3 +24,4 @@ Im Verlauf der Entwicklung werden in dieser Datei die Änderungen in den einzeln
 - Aufnahme von Screenshots
 - Auslesen von Chrome Passwörtern
 - Keylogger
+- Startmenü zum testen von Funktionen
