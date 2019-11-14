@@ -38,9 +38,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.SQLite">
-      <HintPath>Libs\System.Data.SQLite.dll</HintPath>
-    </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Security" />
     <Reference Include="System.Windows.Forms" />
@@ -52,11 +49,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChromePasswordReader.cs" />
     <Compile Include="Cmd.cs" />
-    <Compile Include="Credential.cs" />
     <Compile Include="DNAV.cs" />
-    <Compile Include="IPasswordReader.cs" />
     <Compile Include="Keylogger.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -71,16 +65,5 @@
     <None Include="app.manifest" />
   </ItemGroup>
   <ItemGroup />
-  <ItemGroup>
-    <Content Include="Libs\SQLite.Designer.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Libs\SQLite.Interop.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Libs\System.Data.SQLite.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
