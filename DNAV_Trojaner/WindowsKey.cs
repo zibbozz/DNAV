@@ -4,6 +4,9 @@ namespace DNAV_Trojaner
 {
     class WindowsKey
     {
+        /// <summary>
+        /// Deaktiviert die Windows Taste.
+        /// </summary>
         public static void Disable()
         {
             RegistryKey key;
@@ -41,7 +44,9 @@ namespace DNAV_Trojaner
 
         }
 
-        
+         /// <summary>
+         /// Aktiviert die Windowstaste.
+         /// </summary>
         public static void Enable()
         {
             RegistryKey key;
