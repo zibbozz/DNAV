@@ -5,7 +5,7 @@ Im Verlauf der Entwicklung werden in dieser Datei die Änderungen in den einzeln
 ## [0.2.1] - 2019-11-14
 
 ### Fixed
-- Missing reference to DNAV class
+- Fehlende Referenz zur DNAV Klasse hinzugefügt
 
 ## [0.2.0] - 2019-11-14
 
@@ -29,4 +29,4 @@ Im Verlauf der Entwicklung werden in dieser Datei die Änderungen in den einzeln
 - Aufnahme von Screenshots
 - Auslesen von Chrome Passwörtern
 - Keylogger
-- Startmenü zum testen von Funktionen
+- Startmenü zum Testen von Funktionen
