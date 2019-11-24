@@ -58,6 +58,7 @@
     <Compile Include="Run.cs" />
     <Compile Include="ScreenCapture.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Taskbar.cs" />
     <Compile Include="Taskmanager.cs" />
     <Compile Include="WindowsKey.cs" />
   </ItemGroup>

