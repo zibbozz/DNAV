@@ -2,6 +2,18 @@
 
 Im Verlauf der Entwicklung werden in dieser Datei die Änderungen in den einzelnen Versionen festgehalten. Die Versionsnummern folgen dem Prinzip der [semantischen Versionierung](https://semver.org)
 
+## [0.3.0] - 2019-11-24
+### Added
+- Trojaner prüft nun ob Administrator Rechte vorhandene sind und verlangt diese nicht mehr aktiv
+- Deaktivieren des Registrierungseditors für nicht-Administrator Benutzer
+- Verstecken der Taskleiste
+
+### Changed
+- Keylogger und verstecken des Konsolenfensters wurden in zwei Optionen innerhalb der DNAV Klasse aufgeteilt
+
+### Fixed
+- Schreibfehler in einer Funktion der Run Klasse
+
 ## [0.2.1] - 2019-11-14
 
 ### Fixed
