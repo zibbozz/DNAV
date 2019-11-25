@@ -36,7 +36,7 @@ namespace DNAV_Trojaner
                         break;
                     case "2":
                         Console.Clear();
-                        Run.Disbable();
+                        Run.Disable();
                         Console.WriteLine("\n\tAusführen Dialog wurde deaktiviert");
                         Console.ReadKey();
                         break;
