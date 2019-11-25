@@ -2,6 +2,10 @@
 
 Im Verlauf der Entwicklung werden in dieser Datei die Änderungen in den einzelnen Versionen festgehalten. Die Versionsnummern folgen dem Prinzip der [semantischen Versionierung](https://semver.org)
 
+## [0.3.1] - 2019-11-25
+### Fixed
+- Trojaner stürzte bei Autostart ab, bei relativen Pfaden wird Funktion nun nicht ausgeführt
+
 ## [0.3.0] - 2019-11-24
 ### Added
 - Trojaner prüft nun ob Administrator Rechte vorhandene sind und verlangt diese nicht mehr aktiv
