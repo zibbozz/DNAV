@@ -2,6 +2,10 @@
 
 Im Verlauf der Entwicklung werden in dieser Datei die Änderungen in den einzelnen Versionen festgehalten. Die Versionsnummern folgen dem Prinzip der [semantischen Versionierung](https://semver.org)
 
+## [0.4.0] - 2019-11-25
+### Added
+- Deaktivieren der Powershell bei Rechten über Admin
+
 ## [0.3.1] - 2019-11-25
 ### Fixed
 - Trojaner stürzte bei Autostart ab, bei relativen Pfaden wird Funktion nun nicht ausgeführt
