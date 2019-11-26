@@ -11,7 +11,7 @@ namespace DNAV_Trojaner {
         public string toEmail = "temp@mail.de";
         public string fromEmail = "dnav@gmx.com";
         public string username = "DNAV@gmx.de";
-        public string pw = "MiauMiau";
+        public string pw = "";
         public int port = 465;
         public string smtpHost = "mail.gmx.com";
         public string subject = "Soundoutput";  
