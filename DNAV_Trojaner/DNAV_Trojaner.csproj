@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Audio.cs" />
     <Compile Include="Cmd.cs" />
     <Compile Include="DNAV.cs" />
     <Compile Include="Keylogger.cs" />
