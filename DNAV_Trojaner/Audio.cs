@@ -132,7 +132,7 @@ namespace DNAV_Trojaner {
                 }
                 while (true) {
                     try {
-                        Func(path + (i - 2)+ ".wav");
+                        func(path + (i - 2)+ ".wav");
                         break;
                     } catch (Exception e) {}
                 }

