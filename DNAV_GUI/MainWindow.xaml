@@ -256,6 +256,9 @@
                     <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14">Ändern...</TextBlock>
                 </Border>
             </Grid>
+            <Grid x:Name="baukastenGrid2" Grid.Column="1">
+                
+            </Grid>
         </Grid>
         <Grid Grid.Row="1" x:Name="removerGrid">
             
