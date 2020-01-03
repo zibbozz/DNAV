@@ -32,17 +32,32 @@ namespace DNAV_GUI
 
         private void Clients_Click(object sender, MouseButtonEventArgs e)
         {
-            
+            clientsGrid.Opacity = 1;
+            clientsGrid.IsEnabled = true;
+            baukastenGrid.Opacity = 0;
+            baukastenGrid.IsEnabled = false;
+            removerGrid.Opacity = 0;
+            removerGrid.IsEnabled = false;
         }
 
         private void Baukasten_Click(object sender, MouseButtonEventArgs e)
         {
-
+            clientsGrid.Opacity = 0;
+            clientsGrid.IsEnabled = false;
+            baukastenGrid.Opacity = 1;
+            baukastenGrid.IsEnabled = true;
+            removerGrid.Opacity = 0;
+            removerGrid.IsEnabled = false;
         }
 
         private void Remover_Click(object sender, MouseButtonEventArgs e)
         {
-
+            clientsGrid.Opacity = 0;
+            clientsGrid.IsEnabled = false;
+            baukastenGrid.Opacity = 0;
+            baukastenGrid.IsEnabled = false;
+            removerGrid.Opacity = 1;
+            removerGrid.IsEnabled = true;
         }
 
         private void ChangePath_Click(object sender, MouseButtonEventArgs e)
