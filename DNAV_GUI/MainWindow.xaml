@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DNAV_GUI"
         mc:Ignorable="d"
-        Title="DNAV Bridge" Height="450" Width="800" WindowStyle="None">
+        Title="DNAV Bridge" Height="450" Width="800" WindowStyle="None"
+        PreviewMouseLeftButtonDown="Window_PreviewMouseLeftButtonDown">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
@@ -135,5 +136,6 @@
                 <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">Remover</TextBlock>
             </Border>
         </Grid>
+        
     </Grid>
 </Window>
