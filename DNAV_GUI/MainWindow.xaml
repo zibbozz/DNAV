@@ -143,6 +143,49 @@
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Border PreviewMouseLeftButtonDown="Allgemein_Click" BorderThickness="0">
+                    <Border.Effect>
+                        <DropShadowEffect Opacity="0.4" BlurRadius="15" Direction="270"/>
+                    </Border.Effect>
+                    <Border.Style>
+                        <Style TargetType="Border">
+                            <Setter Property="Background" Value="#5F6369"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ColorAnimation To="#7F8389" Duration="0:0:0.1" Storyboard.TargetProperty="Background.Color"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.EnterActions>
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ColorAnimation To="#5F6369" Duration="0:0:0.1" Storyboard.TargetProperty="Background.Color"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.ExitActions>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Border.Style>
+                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14">Allgemein</TextBlock>
+                </Border>
+            </Grid>
             <Grid Grid.Column="1" x:Name="baukastenGrid1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="20"/>
