@@ -5,14 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DNAV_GUI"
         mc:Ignorable="d"
-        Title="DNAV Bridge" Height="450" Width="800" WindowStyle="None"
-        PreviewMouseLeftButtonDown="Window_PreviewMouseLeftButtonDown">
+        Title="DNAV Bridge" Height="450" Width="800" WindowStyle="None">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        <Grid>
+        <Grid PreviewMouseLeftButtonDown="Window_PreviewMouseLeftButtonDown">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
@@ -136,11 +135,38 @@
                 <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">Remover</TextBlock>
             </Border>
         </Grid>
-        <Grid Grid.Row="1" x:Name="clientsGrid">
-            
+        <Grid Grid.Row="1" x:Name="clientsGrid" Opacity="0">
+            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="24">Noch keine Funktion, da keine TCP Verbindung entwickelt wurde.</TextBlock>    
         </Grid>
         <Grid Grid.Row="1" x:Name="baukastenGrid">
-            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="20"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Column="1" VerticalAlignment="Bottom">Name</TextBlock>
+            <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" x:Name="nameTextBox" FontSize="18" VerticalContentAlignment="Center"></TextBox>
         </Grid>
         <Grid Grid.Row="1" x:Name="removerGrid">
             
