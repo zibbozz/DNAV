@@ -140,64 +140,67 @@
         </Grid>
         <Grid Grid.Row="1" x:Name="baukastenGrid">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="20"/>
                 <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="20"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="20"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-            </Grid.RowDefinitions>
-            <TextBlock Grid.Column="1" VerticalAlignment="Bottom">Name</TextBlock>
-            <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" x:Name="nameTextBox" FontSize="18" VerticalContentAlignment="Center"></TextBox>
-            <TextBlock Grid.Column="4" VerticalAlignment="Bottom">Ausgabepfad</TextBlock>
-            <TextBlock x:Name="pathTextBlock" Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="4" VerticalAlignment="Center" FontSize="12" TextWrapping="Wrap">dnav.exe</TextBlock>
-            <Border PreviewMouseLeftButtonDown="ChangePath_Click" Grid.Row="1" Grid.Column="8" BorderThickness="0" CornerRadius="7">
-                <Border.Effect>
-                    <DropShadowEffect Opacity="0.4" BlurRadius="15" Direction="270"/>
-                </Border.Effect>
-                <Border.Style>
-                    <Style TargetType="Border">
-                        <Setter Property="Background" Value="#5F6369"/>
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Trigger.EnterActions>
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <ColorAnimation To="#7F8389" Duration="0:0:0.1" Storyboard.TargetProperty="Background.Color"/>
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </Trigger.EnterActions>
-                                <Trigger.ExitActions>
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <ColorAnimation To="#5F6369" Duration="0:0:0.1" Storyboard.TargetProperty="Background.Color"/>
-                                        </Storyboard>
-                                    </BeginStoryboard>    
-                                </Trigger.ExitActions>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Border.Style>
-                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14">Ändern...</TextBlock>
-            </Border>
+            <Grid Grid.Column="1" x:Name="baukastenGrid1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="20"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Column="1" VerticalAlignment="Bottom">Trojaner Name</TextBlock>
+                <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" x:Name="nameTextBox" FontSize="18" VerticalContentAlignment="Center"></TextBox>
+                <TextBlock Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom">Ausgabepfad</TextBlock>
+                <TextBlock x:Name="pathTextBlock" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="4" VerticalAlignment="Center" FontSize="12" TextWrapping="Wrap">dnav.exe</TextBlock>
+                <Border PreviewMouseLeftButtonDown="ChangePath_Click" Grid.Row="3" Grid.Column="5" BorderThickness="0" CornerRadius="7">
+                    <Border.Effect>
+                        <DropShadowEffect Opacity="0.4" BlurRadius="15" Direction="270"/>
+                    </Border.Effect>
+                    <Border.Style>
+                        <Style TargetType="Border">
+                            <Setter Property="Background" Value="#5F6369"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ColorAnimation To="#7F8389" Duration="0:0:0.1" Storyboard.TargetProperty="Background.Color"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.EnterActions>
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ColorAnimation To="#5F6369" Duration="0:0:0.1" Storyboard.TargetProperty="Background.Color"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.ExitActions>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Border.Style>
+                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14">Ändern...</TextBlock>
+                </Border>
+            </Grid>
         </Grid>
         <Grid Grid.Row="1" x:Name="removerGrid">
             
