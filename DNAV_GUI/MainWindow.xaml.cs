@@ -24,5 +24,10 @@ namespace DNAV_GUI
         {
             InitializeComponent();
         }
+
+        private void Exit_Click(object sender, MouseButtonEventArgs e)
+        {
+            Environment.Exit(0);
+        }
     }
 }
