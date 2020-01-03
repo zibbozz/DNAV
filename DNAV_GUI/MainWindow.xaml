@@ -136,6 +136,14 @@
                 <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">Remover</TextBlock>
             </Border>
         </Grid>
-        
+        <Grid Grid.Row="1" x:Name="clientsGrid">
+            
+        </Grid>
+        <Grid Grid.Row="1" x:Name="baukastenGrid">
+            
+        </Grid>
+        <Grid Grid.Row="1" x:Name="removerGrid">
+            
+        </Grid>
     </Grid>
 </Window>
