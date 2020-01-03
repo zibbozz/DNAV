@@ -29,5 +29,20 @@ namespace DNAV_GUI
         {
             Environment.Exit(0);
         }
+
+        private void Clients_Click(object sender, MouseButtonEventArgs e)
+        {
+            
+        }
+
+        private void Baukasten_Click(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void Remover_Click(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 }

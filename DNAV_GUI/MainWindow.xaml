@@ -47,6 +47,93 @@
                 </Border.Style>
                 <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">X</TextBlock>
             </Border>
+            <Border Grid.Column="0" BorderThickness="0" PreviewMouseLeftButtonDown="Clients_Click">
+                <Border.Effect>
+                    <DropShadowEffect Opacity="0.4" BlurRadius="15" Direction="270"/>
+                </Border.Effect>
+                <Border.Style>
+                    <Style TargetType="Border">
+                        <Setter Property="Background" Value="#5F6369"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation To="#7F8389" Duration="0:0:0.1" Storyboard.TargetProperty="Background.Color"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation To="#5F6369" Duration="0:0:0.1" Storyboard.TargetProperty="Background.Color"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Border.Style>
+                <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">Clients</TextBlock>
+            </Border>
+            <Border Grid.Column="1" BorderThickness="0" PreviewMouseLeftButtonDown="Baukasten_Click">
+                <Border.Effect>
+                    <DropShadowEffect Opacity="0.4" BlurRadius="15" Direction="270"/>
+                </Border.Effect>
+                <Border.Style>
+                    <Style TargetType="Border">
+                        <Setter Property="Background" Value="#5F6369"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation To="#7F8389" Duration="0:0:0.1" Storyboard.TargetProperty="Background.Color"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation To="#5F6369" Duration="0:0:0.1" Storyboard.TargetProperty="Background.Color"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Border.Style>
+                <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">Baukasten</TextBlock>
+            </Border>
+            <Border Grid.Column="2" BorderThickness="0" PreviewMouseLeftButtonDown="Remover_Click">
+                <Border.Effect>
+                    <DropShadowEffect Opacity="0.4" BlurRadius="15" Direction="270"/>
+                </Border.Effect>
+                <Border.Style>
+                    <Style TargetType="Border">
+                        <Setter Property="Background" Value="#5F6369"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation To="#7F8389" Duration="0:0:0.1" Storyboard.TargetProperty="Background.Color"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation To="#5F6369" Duration="0:0:0.1" Storyboard.TargetProperty="Background.Color"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Border.Style>
+                <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">Remover</TextBlock>
+            </Border>
         </Grid>
     </Grid>
 </Window>
