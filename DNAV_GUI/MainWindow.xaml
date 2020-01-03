@@ -146,17 +146,27 @@
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
+                    <RowDefinition Height="10"/>
                     <RowDefinition Height="1*"/>
+                    <RowDefinition Height="10"/>
                     <RowDefinition Height="1*"/>
+                    <RowDefinition Height="10"/>
                     <RowDefinition Height="1*"/>
+                    <RowDefinition Height="10"/>
                     <RowDefinition Height="1*"/>
+                    <RowDefinition Height="10"/>
                     <RowDefinition Height="1*"/>
+                    <RowDefinition Height="10"/>
                     <RowDefinition Height="1*"/>
+                    <RowDefinition Height="10"/>
                     <RowDefinition Height="1*"/>
+                    <RowDefinition Height="10"/>
                     <RowDefinition Height="1*"/>
+                    <RowDefinition Height="10"/>
                     <RowDefinition Height="1*"/>
+                    <RowDefinition Height="10"/>
                 </Grid.RowDefinitions>
-                <Border PreviewMouseLeftButtonDown="Allgemein_Click" BorderThickness="0">
+                <Border PreviewMouseLeftButtonDown="Allgemein_Click" Grid.RowSpan="2" BorderThickness="0">
                     <Border.Effect>
                         <DropShadowEffect Opacity="0.4" BlurRadius="15" Direction="270"/>
                     </Border.Effect>
@@ -168,7 +178,7 @@
                                     <Trigger.EnterActions>
                                         <BeginStoryboard>
                                             <Storyboard>
-                                                <ColorAnimation To="#7F8389" Duration="0:0:0.1" Storyboard.TargetProperty="Background.Color"/>
+                                                <ColorAnimation To="#2288FF" Duration="0:0:0.1" Storyboard.TargetProperty="Background.Color"/>
                                             </Storyboard>
                                         </BeginStoryboard>
                                     </Trigger.EnterActions>
@@ -185,6 +195,8 @@
                     </Border.Style>
                     <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14">Allgemein</TextBlock>
                 </Border>
+
+                <Rectangle x:Name="activeTab" Grid.Row="1" Fill="#2288FF"></Rectangle>
             </Grid>
             <Grid Grid.Column="1" x:Name="baukastenGrid1">
                 <Grid.ColumnDefinitions>
