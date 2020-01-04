@@ -141,6 +141,40 @@ namespace DNAV_GUI
             activeTab.SetValue(Grid.RowProperty, 7);
         }
 
+        private void TCP_Click(object sender, MouseButtonEventArgs e)
+        {
+            baukastenGrid1.Opacity = 0;
+            baukastenGrid1.IsEnabled = false;
+            baukastenGrid1.IsHitTestVisible = false;
+            baukastenGrid2.Opacity = 0;
+            baukastenGrid2.IsEnabled = false;
+            baukastenGrid2.IsHitTestVisible = false;
+            baukastenGrid3.Opacity = 0;
+            baukastenGrid3.IsEnabled = false;
+            baukastenGrid3.IsHitTestVisible = false;
+            baukastenGrid4.Opacity = 0;
+            baukastenGrid4.IsEnabled = false;
+            baukastenGrid4.IsHitTestVisible = false;
+            activeTab.SetValue(Grid.RowProperty, 9);
+        }
+
+        private void Erstellen_Click(object sender, MouseButtonEventArgs e)
+        {
+            baukastenGrid1.Opacity = 0;
+            baukastenGrid1.IsEnabled = false;
+            baukastenGrid1.IsHitTestVisible = false;
+            baukastenGrid2.Opacity = 0;
+            baukastenGrid2.IsEnabled = false;
+            baukastenGrid2.IsHitTestVisible = false;
+            baukastenGrid3.Opacity = 0;
+            baukastenGrid3.IsEnabled = false;
+            baukastenGrid3.IsHitTestVisible = false;
+            baukastenGrid4.Opacity = 0;
+            baukastenGrid4.IsEnabled = false;
+            baukastenGrid4.IsHitTestVisible = false;
+            activeTab.SetValue(Grid.RowProperty, 11);
+        }
+
         private void Window_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if(e.ChangedButton == MouseButton.Left)
