@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Forms;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -20,6 +21,7 @@ namespace DNAV_GUI
     /// </summary>
     public partial class MainWindow : Window
     {
+        private string path = "dnav.exe";
         public MainWindow()
         {
             InitializeComponent();
@@ -62,7 +64,13 @@ namespace DNAV_GUI
 
         private void ChangePath_Click(object sender, MouseButtonEventArgs e)
         {
-
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Exe Datei|*.exe";
+            if(sfd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                path = sfd.FileName;
+                pathTextBlock.Text = path;
+            }
         }
 
         private void Allgemein_Click(object sender, MouseButtonEventArgs e)

