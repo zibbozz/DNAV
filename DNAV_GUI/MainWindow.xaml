@@ -195,7 +195,65 @@
                     </Border.Style>
                     <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14">Allgemein</TextBlock>
                 </Border>
-
+                <Border PreviewMouseLeftButtonDown="Heimlich_Click" Grid.Row="2" Grid.RowSpan="2" BorderThickness="0">
+                    <Border.Effect>
+                        <DropShadowEffect Opacity="0.4" BlurRadius="15" Direction="270"/>
+                    </Border.Effect>
+                    <Border.Style>
+                        <Style TargetType="Border">
+                            <Setter Property="Background" Value="#5F6369"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ColorAnimation To="#2288FF" Duration="0:0:0.1" Storyboard.TargetProperty="Background.Color"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.EnterActions>
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ColorAnimation To="#5F6369" Duration="0:0:0.1" Storyboard.TargetProperty="Background.Color"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.ExitActions>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Border.Style>
+                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14">Heimlich</TextBlock>
+                </Border>
+                <Border PreviewMouseLeftButtonDown="Aggressiv_Click" Grid.RowSpan="2" Grid.Row="4" BorderThickness="0">
+                    <Border.Effect>
+                        <DropShadowEffect Opacity="0.4" BlurRadius="15" Direction="270"/>
+                    </Border.Effect>
+                    <Border.Style>
+                        <Style TargetType="Border">
+                            <Setter Property="Background" Value="#5F6369"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ColorAnimation To="#2288FF" Duration="0:0:0.1" Storyboard.TargetProperty="Background.Color"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.EnterActions>
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ColorAnimation To="#5F6369" Duration="0:0:0.1" Storyboard.TargetProperty="Background.Color"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.ExitActions>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Border.Style>
+                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14">Aggressiv</TextBlock>
+                </Border>
+                
                 <Rectangle x:Name="activeTab" Grid.Row="1" Fill="#2288FF"></Rectangle>
             </Grid>
             <Grid Grid.Column="1" x:Name="baukastenGrid1">
@@ -257,6 +315,9 @@
                 </Border>
             </Grid>
             <Grid x:Name="baukastenGrid2" Grid.Column="1">
+                   
+            </Grid>
+            <Grid x:Name="baukastenGrid3" Grid.Column="1">
                 
             </Grid>
         </Grid>

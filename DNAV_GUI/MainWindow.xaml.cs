@@ -70,6 +70,16 @@ namespace DNAV_GUI
 
         }
 
+        private void Heimlich_Click(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void Aggressiv_Click(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
         private void Window_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if(e.ChangedButton == MouseButton.Left)
