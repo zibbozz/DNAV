@@ -211,6 +211,11 @@ namespace DNAV_GUI
             activeTab.SetValue(Grid.RowProperty, 11);
         }
 
+        private void Compile_Click(object sender, MouseButtonEventArgs e)
+        {
+            
+        }
+
         private void Window_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if(e.ChangedButton == MouseButton.Left)
