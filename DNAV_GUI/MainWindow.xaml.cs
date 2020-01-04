@@ -223,5 +223,27 @@ namespace DNAV_GUI
                 this.DragMove();
             }
         }
+
+        private void keyloggerCheckbox_Checked(object sender, RoutedEventArgs e)
+        {
+            keyloggerLocalCheckbox.IsEnabled = true;
+            keyloggerEmailCheckbox.IsEnabled = true;
+        }
+
+        private void keyloggerCheckbox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            keyloggerLocalCheckbox.IsEnabled = false;
+            keyloggerEmailCheckbox.IsEnabled = false;
+        }
+
+        private void keyloggerLocalCheckbox_Checked(object sender, RoutedEventArgs e)
+        {
+            keyloggerLocalCombobox.IsEnabled = true;
+        }
+
+        private void keyloggerLocalCheckbox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            keyloggerLocalCombobox.IsEnabled = false;
+        }
     }
 }

