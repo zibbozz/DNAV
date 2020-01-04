@@ -87,6 +87,12 @@ namespace DNAV_GUI
             baukastenGrid4.Opacity = 0;
             baukastenGrid4.IsEnabled = false;
             baukastenGrid4.IsHitTestVisible = false;
+            baukastenGrid5.Opacity = 0;
+            baukastenGrid5.IsEnabled = false;
+            baukastenGrid5.IsHitTestVisible = false;
+            baukastenGrid6.Opacity = 0;
+            baukastenGrid6.IsEnabled = false;
+            baukastenGrid6.IsHitTestVisible = false;
             activeTab.SetValue(Grid.RowProperty, 1);
         }
 
@@ -104,6 +110,12 @@ namespace DNAV_GUI
             baukastenGrid4.Opacity = 0;
             baukastenGrid4.IsEnabled = false;
             baukastenGrid4.IsHitTestVisible = false;
+            baukastenGrid5.Opacity = 0;
+            baukastenGrid5.IsEnabled = false;
+            baukastenGrid5.IsHitTestVisible = false;
+            baukastenGrid6.Opacity = 0;
+            baukastenGrid6.IsEnabled = false;
+            baukastenGrid6.IsHitTestVisible = false;
             activeTab.SetValue(Grid.RowProperty, 3);
         }
 
@@ -121,6 +133,12 @@ namespace DNAV_GUI
             baukastenGrid4.Opacity = 0;
             baukastenGrid4.IsEnabled = false;
             baukastenGrid4.IsHitTestVisible = false;
+            baukastenGrid5.Opacity = 0;
+            baukastenGrid5.IsEnabled = false;
+            baukastenGrid5.IsHitTestVisible = false;
+            baukastenGrid6.Opacity = 0;
+            baukastenGrid6.IsEnabled = false;
+            baukastenGrid6.IsHitTestVisible = false;
             activeTab.SetValue(Grid.RowProperty, 5);
         }
 
@@ -138,6 +156,12 @@ namespace DNAV_GUI
             baukastenGrid4.Opacity = 1;
             baukastenGrid4.IsEnabled = true;
             baukastenGrid4.IsHitTestVisible = true;
+            baukastenGrid5.Opacity = 0;
+            baukastenGrid5.IsEnabled = false;
+            baukastenGrid5.IsHitTestVisible = false;
+            baukastenGrid6.Opacity = 0;
+            baukastenGrid6.IsEnabled = false;
+            baukastenGrid6.IsHitTestVisible = false;
             activeTab.SetValue(Grid.RowProperty, 7);
         }
 
@@ -155,6 +179,12 @@ namespace DNAV_GUI
             baukastenGrid4.Opacity = 0;
             baukastenGrid4.IsEnabled = false;
             baukastenGrid4.IsHitTestVisible = false;
+            baukastenGrid5.Opacity = 1;
+            baukastenGrid5.IsEnabled = true;
+            baukastenGrid5.IsHitTestVisible = true;
+            baukastenGrid6.Opacity = 0;
+            baukastenGrid6.IsEnabled = false;
+            baukastenGrid6.IsHitTestVisible = false;
             activeTab.SetValue(Grid.RowProperty, 9);
         }
 
@@ -172,6 +202,12 @@ namespace DNAV_GUI
             baukastenGrid4.Opacity = 0;
             baukastenGrid4.IsEnabled = false;
             baukastenGrid4.IsHitTestVisible = false;
+            baukastenGrid5.Opacity = 0;
+            baukastenGrid5.IsEnabled = false;
+            baukastenGrid5.IsHitTestVisible = false;
+            baukastenGrid6.Opacity = 1;
+            baukastenGrid6.IsEnabled = true;
+            baukastenGrid6.IsHitTestVisible = true;
             activeTab.SetValue(Grid.RowProperty, 11);
         }
 
