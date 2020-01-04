@@ -38,6 +38,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Security" />
     <Reference Include="System.Windows.Forms" />
@@ -62,6 +63,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="Taskbar.cs" />
     <Compile Include="Taskmanager.cs" />
+    <Compile Include="User.cs" />
     <Compile Include="WindowsKey.cs" />
   </ItemGroup>
   <ItemGroup>
