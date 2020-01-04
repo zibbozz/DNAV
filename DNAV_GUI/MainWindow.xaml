@@ -285,7 +285,7 @@
                 
                 <Rectangle x:Name="activeTab" Grid.Row="1" Fill="#2288FF"></Rectangle>
             </Grid>
-            <Grid Grid.Column="1" x:Name="baukastenGrid1" Opacity="0" IsEnabled="False">
+            <Grid Grid.Column="1" x:Name="baukastenGrid1" Opacity="1" IsEnabled="True">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="20"/>
                     <ColumnDefinition Width="1*"/>
@@ -408,7 +408,7 @@
                 <CheckBox x:Name="powershellCheckbox" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center">Powershell deaktivieren</CheckBox>
                 <CheckBox x:Name="regeditCheckbox" Grid.Row="10" Grid.Column="1" VerticalAlignment="Center">RegEdit deaktivieren</CheckBox>
             </Grid>
-            <Grid x:Name="baukastenGrid4" Grid.Column="1">
+            <Grid x:Name="baukastenGrid4" Grid.Column="1" Opacity="0" IsEnabled="False">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="20"/>
                     <ColumnDefinition Width="1*"/>
@@ -432,6 +432,8 @@
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
+                <CheckBox x:Name="emailCheckbox" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center">Daten per Email versenden</CheckBox>
+                
             </Grid>
         </Grid>
         <Grid Grid.Row="1" x:Name="removerGrid">

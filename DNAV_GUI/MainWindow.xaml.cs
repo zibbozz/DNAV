@@ -75,22 +75,70 @@ namespace DNAV_GUI
 
         private void Allgemein_Click(object sender, MouseButtonEventArgs e)
         {
-
+            baukastenGrid1.Opacity = 1;
+            baukastenGrid1.IsEnabled = true;
+            baukastenGrid1.IsHitTestVisible = true;
+            baukastenGrid2.Opacity = 0;
+            baukastenGrid2.IsEnabled = false;
+            baukastenGrid2.IsHitTestVisible = false;
+            baukastenGrid3.Opacity = 0;
+            baukastenGrid3.IsEnabled = false;
+            baukastenGrid3.IsHitTestVisible = false;
+            baukastenGrid4.Opacity = 0;
+            baukastenGrid4.IsEnabled = false;
+            baukastenGrid4.IsHitTestVisible = false;
+            activeTab.SetValue(Grid.RowProperty, 1);
         }
 
         private void Heimlich_Click(object sender, MouseButtonEventArgs e)
         {
-
+            baukastenGrid1.Opacity = 0;
+            baukastenGrid1.IsEnabled = false;
+            baukastenGrid1.IsHitTestVisible = false;
+            baukastenGrid2.Opacity = 1;
+            baukastenGrid2.IsEnabled = true;
+            baukastenGrid2.IsHitTestVisible = true;
+            baukastenGrid3.Opacity = 0;
+            baukastenGrid3.IsEnabled = false;
+            baukastenGrid3.IsHitTestVisible = false;
+            baukastenGrid4.Opacity = 0;
+            baukastenGrid4.IsEnabled = false;
+            baukastenGrid4.IsHitTestVisible = false;
+            activeTab.SetValue(Grid.RowProperty, 3);
         }
 
         private void Aggressiv_Click(object sender, MouseButtonEventArgs e)
         {
-
+            baukastenGrid1.Opacity = 0;
+            baukastenGrid1.IsEnabled = false;
+            baukastenGrid1.IsHitTestVisible = false;
+            baukastenGrid2.Opacity = 0;
+            baukastenGrid2.IsEnabled = false;
+            baukastenGrid2.IsHitTestVisible = false;
+            baukastenGrid3.Opacity = 1;
+            baukastenGrid3.IsEnabled = true;
+            baukastenGrid3.IsHitTestVisible = true;
+            baukastenGrid4.Opacity = 0;
+            baukastenGrid4.IsEnabled = false;
+            baukastenGrid4.IsHitTestVisible = false;
+            activeTab.SetValue(Grid.RowProperty, 5);
         }
 
         private void Email_Click(object sender, MouseButtonEventArgs e)
         {
-
+            baukastenGrid1.Opacity = 0;
+            baukastenGrid1.IsEnabled = false;
+            baukastenGrid1.IsHitTestVisible = false;
+            baukastenGrid2.Opacity = 0;
+            baukastenGrid2.IsEnabled = false;
+            baukastenGrid2.IsHitTestVisible = false;
+            baukastenGrid3.Opacity = 0;
+            baukastenGrid3.IsEnabled = false;
+            baukastenGrid3.IsHitTestVisible = false;
+            baukastenGrid4.Opacity = 1;
+            baukastenGrid4.IsEnabled = true;
+            baukastenGrid4.IsHitTestVisible = true;
+            activeTab.SetValue(Grid.RowProperty, 7);
         }
 
         private void Window_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
