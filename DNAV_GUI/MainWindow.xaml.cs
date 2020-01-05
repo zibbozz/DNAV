@@ -36,30 +36,39 @@ namespace DNAV_GUI
         {
             clientsGrid.Opacity = 1;
             clientsGrid.IsEnabled = true;
+            clientsGrid.IsHitTestVisible = true;
             baukastenGrid.Opacity = 0;
             baukastenGrid.IsEnabled = false;
+            baukastenGrid.IsHitTestVisible = false;
             removerGrid.Opacity = 0;
             removerGrid.IsEnabled = false;
+            removerGrid.IsHitTestVisible = false;
         }
 
         private void Baukasten_Click(object sender, MouseButtonEventArgs e)
         {
             clientsGrid.Opacity = 0;
             clientsGrid.IsEnabled = false;
+            clientsGrid.IsHitTestVisible = false;
             baukastenGrid.Opacity = 1;
             baukastenGrid.IsEnabled = true;
+            baukastenGrid.IsHitTestVisible = true;
             removerGrid.Opacity = 0;
             removerGrid.IsEnabled = false;
+            removerGrid.IsHitTestVisible = false;
         }
 
         private void Remover_Click(object sender, MouseButtonEventArgs e)
         {
             clientsGrid.Opacity = 0;
             clientsGrid.IsEnabled = false;
+            clientsGrid.IsHitTestVisible = false;
             baukastenGrid.Opacity = 0;
             baukastenGrid.IsEnabled = false;
+            baukastenGrid.IsHitTestVisible = false;
             removerGrid.Opacity = 1;
             removerGrid.IsEnabled = true;
+            removerGrid.IsHitTestVisible = true;
         }
 
         private void ChangePath_Click(object sender, MouseButtonEventArgs e)
@@ -308,6 +317,18 @@ namespace DNAV_GUI
         private void screenshotLocalCheckbox_Unchecked(object sender, RoutedEventArgs e)
         {
             screenshotLocalCombobox.IsEnabled = false;
+        }
+
+        private void createUserCheckbox_Checked(object sender, RoutedEventArgs e)
+        {
+            createUserUsernameTextbox.IsEnabled = true;
+            createUserPasswortTextbox.IsEnabled = true;
+        }
+
+        private void createUserCheckbox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            createUserUsernameTextbox.IsEnabled = false;
+            createUserPasswortTextbox.IsEnabled = false;
         }
     }
 }
