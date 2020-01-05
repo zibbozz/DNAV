@@ -323,6 +323,20 @@ namespace DNAV_GUI
 
         private void Compile_Click(object sender, MouseButtonEventArgs e)
         {
+            bool useSystemDiagnostics = false;
+            bool useSystemRuntimeInteropServices = false;
+            bool useSystemWindowsForms = false;
+            bool useSystemIO = false;
+
+            // Anmerkung: Muss mit == true abgefragt werden, da Rückgabetyp von IsChecked vom Typ bool? ist
+            if (keyloggerCheckbox.IsChecked == true)
+            {
+                useSystemDiagnostics = true;
+                useSystemRuntimeInteropServices = true;
+                useSystemWindowsForms = true;
+                useSystemIO = true;
+            }
+
             CSharpCodeProvider provider = new CSharpCodeProvider();
             CompilerParameters parameters = new CompilerParameters();
 
@@ -330,9 +344,31 @@ namespace DNAV_GUI
             parameters.GenerateExecutable = true;
             parameters.OutputAssembly = path;
 
-            string code = "";
+            string code = "using System;";
+
+            if (useSystemDiagnostics)
+                code += "using System.Diagnostics;";
+            if (useSystemRuntimeInteropServices)
+                code += "using System.Runtime.InteropServices;";
+            if (useSystemWindowsForms)
+                code += "using System.Windows.Forms;";
+            if (useSystemIO)
+                code += "using System.IO;";
+
+            code += "namespace " + nameTextBox.Text + "{";
+            code += "class Program{";
+            code += "static void Main(){";
+            
+            // Hier landet Code, welcher in den Trojaner soll.
+
+
+            code += "}";
+            code += "}";
+            code += "}";
 
             CompilerResults results = provider.CompileAssemblyFromSource(parameters, code);
+            compileProgress.Value = 100;
+            compileStatus.Text = "Anwendung erstellt: " + results.PathToAssembly;
         }
     }
 }
