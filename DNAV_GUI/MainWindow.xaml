@@ -577,7 +577,7 @@
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
-                <Border PreviewMouseLeftButtonDown="Compile_Click" Grid.Row="10" Grid.Column="2" Grid.ColumnSpan="3" BorderThickness="0" CornerRadius="7">
+                <Border PreviewMouseLeftButtonDown="Compile_Click" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="3" BorderThickness="0" CornerRadius="7">
                     <Border.Effect>
                         <DropShadowEffect Opacity="0.4" BlurRadius="15" Direction="270"/>
                     </Border.Effect>
@@ -606,8 +606,9 @@
                     </Border.Style>
                     <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14">Erstellen</TextBlock>
                 </Border>
-                <ProgressBar x:Name="compileProgress" Grid.Column="1" Grid.ColumnSpan="5" Grid.Row="6"></ProgressBar>
-                <TextBlock x:Name="compileStatus" Grid.Column="1" Grid.ColumnSpan="5" Grid.Row="5" VerticalAlignment="Bottom"></TextBlock>
+                <ProgressBar x:Name="compileProgress" Grid.Column="1" Grid.ColumnSpan="5" Grid.Row="2"></ProgressBar>
+                <TextBlock x:Name="compileStatus" Grid.Column="1" Grid.ColumnSpan="5" Grid.Row="1" VerticalAlignment="Bottom"></TextBlock>
+                <RichTextBox IsReadOnly="True" IsReadOnlyCaretVisible="False" x:Name="compileErrorlog" Grid.Column="0" Grid.ColumnSpan="7" Grid.Row="8" Grid.RowSpan="4"></RichTextBox>
             </Grid>
         </Grid>
         <Grid Grid.Row="1" x:Name="removerGrid" Opacity="0" IsEnabled="False" IsHitTestVisible="False">

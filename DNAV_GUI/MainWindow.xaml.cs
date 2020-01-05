@@ -5,6 +5,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using Microsoft.CSharp;
 using System.CodeDom.Compiler;
+using System.Text;
 
 namespace DNAV_GUI
 {
@@ -358,7 +359,9 @@ namespace DNAV_GUI
             code += "namespace " + nameTextBox.Text + "{";
             code += "class Program{";
             code += "static void Main(){";
-            
+
+            // Debug:
+            code += "Console.WriteLine(\"Hallo Welt\");Console.ReadLine();";
             // Hier landet Code, welcher in den Trojaner soll.
 
 
@@ -367,8 +370,23 @@ namespace DNAV_GUI
             code += "}";
 
             CompilerResults results = provider.CompileAssemblyFromSource(parameters, code);
-            compileProgress.Value = 100;
-            compileStatus.Text = "Anwendung erstellt: " + results.PathToAssembly;
+            if (results.Errors.HasErrors)
+            {
+                StringBuilder sb = new StringBuilder();
+
+                foreach (CompilerError error in results.Errors)
+                {
+                    sb.AppendLine(String.Format("Error ({0}): {1}", error.ErrorNumber, error.ErrorText));
+                }
+
+                compileStatus.Text = "Konnte Anwendung nicht erstellen. Es sind " + results.Errors.Count + " Fehler aufgetreten.";
+                compileErrorlog.AppendText(sb.ToString());
+            }
+            else
+            {
+                compileProgress.Value = 100;
+                compileStatus.Text = "Anwendung erstellt: " + results.PathToAssembly;
+            }
         }
     }
 }
