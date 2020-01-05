@@ -43,6 +43,7 @@ namespace DNAV_GUI
             removerGrid.Opacity = 0;
             removerGrid.IsEnabled = false;
             removerGrid.IsHitTestVisible = false;
+            activeMainTab.SetValue(Grid.ColumnProperty, 0);
         }
 
         private void Baukasten_Click(object sender, MouseButtonEventArgs e)
@@ -56,6 +57,7 @@ namespace DNAV_GUI
             removerGrid.Opacity = 0;
             removerGrid.IsEnabled = false;
             removerGrid.IsHitTestVisible = false;
+            activeMainTab.SetValue(Grid.ColumnProperty, 1);
         }
 
         private void Remover_Click(object sender, MouseButtonEventArgs e)
@@ -69,6 +71,7 @@ namespace DNAV_GUI
             removerGrid.Opacity = 1;
             removerGrid.IsEnabled = true;
             removerGrid.IsHitTestVisible = true;
+            activeMainTab.SetValue(Grid.ColumnProperty, 2);
         }
 
         private void ChangePath_Click(object sender, MouseButtonEventArgs e)

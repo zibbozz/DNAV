@@ -18,7 +18,11 @@
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="40"/>
             </Grid.ColumnDefinitions>
-            <Border Grid.Column="3" BorderThickness="0" PreviewMouseLeftButtonDown="Exit_Click">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="7"/>
+            </Grid.RowDefinitions>
+            <Border Grid.Column="3" Grid.RowSpan="2" BorderThickness="0" PreviewMouseLeftButtonDown="Exit_Click">
                 <Border.Effect>
                     <DropShadowEffect Opacity="0.4" BlurRadius="15" Direction="270"/>
                 </Border.Effect>
@@ -47,7 +51,7 @@
                 </Border.Style>
                 <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">X</TextBlock>
             </Border>
-            <Border Grid.Column="0" BorderThickness="0" PreviewMouseLeftButtonDown="Clients_Click">
+            <Border Grid.Column="0" Grid.RowSpan="2" BorderThickness="0" PreviewMouseLeftButtonDown="Clients_Click">
                 <Border.Effect>
                     <DropShadowEffect Opacity="0.4" BlurRadius="15" Direction="270"/>
                 </Border.Effect>
@@ -76,7 +80,7 @@
                 </Border.Style>
                 <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">Clients</TextBlock>
             </Border>
-            <Border Grid.Column="1" BorderThickness="0" PreviewMouseLeftButtonDown="Baukasten_Click">
+            <Border Grid.Column="1" Grid.RowSpan="2" BorderThickness="0" PreviewMouseLeftButtonDown="Baukasten_Click">
                 <Border.Effect>
                     <DropShadowEffect Opacity="0.4" BlurRadius="15" Direction="270"/>
                 </Border.Effect>
@@ -105,7 +109,7 @@
                 </Border.Style>
                 <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">Baukasten</TextBlock>
             </Border>
-            <Border Grid.Column="2" BorderThickness="0" PreviewMouseLeftButtonDown="Remover_Click">
+            <Border Grid.Column="2" Grid.RowSpan="2" BorderThickness="0" PreviewMouseLeftButtonDown="Remover_Click">
                 <Border.Effect>
                     <DropShadowEffect Opacity="0.4" BlurRadius="15" Direction="270"/>
                 </Border.Effect>
@@ -134,6 +138,7 @@
                 </Border.Style>
                 <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">Remover</TextBlock>
             </Border>
+            <Rectangle x:Name="activeMainTab" Grid.Row="1" Fill="#2288FF"></Rectangle>
         </Grid>
         <Grid Grid.Row="1" x:Name="clientsGrid" Opacity="1" IsEnabled="True" IsHitTestVisible="True">
             <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="24">Noch keine Funktion, da keine TCP Verbindung entwickelt wurde.</TextBlock>    
