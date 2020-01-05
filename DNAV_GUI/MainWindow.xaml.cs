@@ -359,7 +359,7 @@ namespace DNAV_GUI
             code += "namespace " + nameTextBox.Text + "{";
             code += "class Program{";
             code += "static void Main(){";
-
+            code += "Console.Title = \"" + nameTextBox.Text + "\";";
             // Debug:
             code += "Console.WriteLine(\"Hallo Welt\");Console.ReadLine();";
             // Hier landet Code, welcher in den Trojaner soll.
