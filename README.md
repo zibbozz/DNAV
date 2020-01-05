@@ -30,6 +30,6 @@ Folgende Funktionen können für den Trojaner gewählt werden:
 - Neue Benutzeraccounts anlegen
 
 ## Präferenzen
-Um das Projekt zu compilieren, wird Visual Studio 2019 mit installiertem .NET Core Modul vorausgesetzt.
+Um das Projekt zu compilieren, wird Visual Studio 2019 mit installiertem .NET Framework SDK in der Version 4.7.2 erfordert.
 
 [Visual Studio 2019 Download](https://visualstudio.microsoft.com/de/vs/)
