@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.CSharp;
+using System.CodeDom.Compiler;
 
 namespace DNAV_GUI
 {
@@ -223,11 +225,6 @@ namespace DNAV_GUI
             activeTab.SetValue(Grid.RowProperty, 11);
         }
 
-        private void Compile_Click(object sender, MouseButtonEventArgs e)
-        {
-            
-        }
-
         private void Window_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if(e.ChangedButton == MouseButton.Left)
@@ -332,6 +329,20 @@ namespace DNAV_GUI
         {
             createUserUsernameTextbox.IsEnabled = false;
             createUserPasswortTextbox.IsEnabled = false;
+        }
+
+        private void Compile_Click(object sender, MouseButtonEventArgs e)
+        {
+            CSharpCodeProvider provider = new CSharpCodeProvider();
+            CompilerParameters parameters = new CompilerParameters();
+
+            parameters.GenerateInMemory = false;
+            parameters.GenerateExecutable = true;
+            parameters.OutputAssembly = path;
+
+            string code = "";
+
+            CompilerResults results = provider.CompileAssemblyFromSource(parameters, code);
         }
     }
 }
