@@ -4,6 +4,7 @@ DNAV ist ein in C# entwickelter Trojaner, welcher Daten auf einem Opfer PC samme
 <p align="center">
   <img width="786" height="443" src="Images/GUI01.png">
 </p>
+
 ## Entwicklungshinweise
 **Der master branch enthält nur stabile releases.** Jeder contributor erhält einen eigenen branch, in dem beliebig gearbeitet werden kann. Wenn eine Funktion eines contributors fertig ist, wird der entsprechende branch in den development branch gemerged. Sollten alle geplanten Funktionen im development branch sein, wird der development branch in den master branch gemerged und ein Release erstellt.
 
