@@ -1191,6 +1191,9 @@ namespace DNAV_GUI
                 useSystemDirectoryServices = true;
             }
 
+            // TODO using Referenz einfügen
+            // Taskbar benutzt System.Runtime.InteropServices
+
             CSharpCodeProvider provider = new CSharpCodeProvider();
             CompilerParameters parameters = new CompilerParameters();
 
@@ -1307,6 +1310,8 @@ namespace DNAV_GUI
             {
                 code += @"User.Create(" + createUserUsernameTextbox.Text + ", " + createUserPasswortTextbox.Password + ")";
             }
+
+            // TODO Aufruf der Disable Methode der Taskbar
 
             code += "}"; // Close void Main
             code += "}"; // Close class Program

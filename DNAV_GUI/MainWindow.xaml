@@ -490,6 +490,7 @@
                 <TextBox IsEnabled="False" x:Name="createUserUsernameTextbox" Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2" VerticalContentAlignment="Center" FontSize="18"></TextBox>
                 <TextBlock Grid.Column="4" Grid.Row="3" VerticalAlignment="Bottom">Passwort</TextBlock>
                 <PasswordBox IsEnabled="False" x:Name="createUserPasswortTextbox" Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="2" VerticalContentAlignment="Center" FontSize="18"></PasswordBox>
+                <!-- TODO Checkbox für Taskbar verstecken Funktion hinzufügen -->
             </Grid>
             <Grid x:Name="baukastenGrid4" Grid.Column="1" Opacity="0" IsEnabled="False" IsHitTestVisible="False">
                 <Grid.ColumnDefinitions>
