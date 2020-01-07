@@ -454,6 +454,8 @@
           <ComboBoxItem>Dokumente</ComboBoxItem>
         </ComboBox>
         <CheckBox IsEnabled="False" x:Name="screenshotEmailCheckbox" Grid.Row="8" Grid.Column="4" VerticalAlignment="Center">Per Email versenden</CheckBox>
+        <TextBlock Grid.Row="9" Grid.Column="4" VerticalAlignment="Bottom">Intervall in Sekunden</TextBlock>
+        <TextBox x:Name="screenshotIntervalTextbox" Grid.Row="10" Grid.Column="4" FontSize="18" VerticalContentAlignment="Center">60</TextBox>
       </Grid>
       <Grid x:Name="baukastenGrid3" Grid.Column="1" Opacity="0" IsEnabled="False" IsHitTestVisible="False">
         <Grid.ColumnDefinitions>
