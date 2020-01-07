@@ -1196,7 +1196,7 @@ namespace DNAV_GUI
             code += "namespace " + nameTextBox.Text + "{";
             code += "class Program{";
             // Funktion, um auf Adminrechte zu prüfen
-            code += @"private bool checkAdmin()
+            code += @"private static bool checkAdmin()
         {
                 WindowsIdentity identity = WindowsIdentity.GetCurrent();
                 WindowsPrincipal principal = new WindowsPrincipal(identity);
