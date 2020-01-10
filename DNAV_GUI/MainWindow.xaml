@@ -450,7 +450,7 @@
         <CheckBox IsEnabled="False" Checked="screenshotLocalCheckbox_Checked" Unchecked="screenshotLocalCheckbox_Unchecked" x:Name="screenshotLocalCheckbox" Grid.Row="8" Grid.Column="2" VerticalAlignment="Center">Lokal speichern</CheckBox>
         <ComboBox IsEnabled="False" x:Name="screenshotLocalCombobox" Grid.Column="2" Grid.Row="9" VerticalContentAlignment="Center" SelectedIndex="0">
           <ComboBoxItem>AppData\Roaming</ComboBoxItem>
-          <ComboBoxItem>AppData\Roaming</ComboBoxItem>
+          <ComboBoxItem>AppData\Local</ComboBoxItem>
           <ComboBoxItem>Dokumente</ComboBoxItem>
         </ComboBox>
         <CheckBox IsEnabled="False" x:Name="screenshotEmailCheckbox" Grid.Row="8" Grid.Column="4" VerticalAlignment="Center">Per Email versenden</CheckBox>
