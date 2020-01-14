@@ -2,6 +2,12 @@
 
 Im Verlauf der Entwicklung werden in dieser Datei die Änderungen in den einzelnen Versionen festgehalten. Die Versionsnummern folgen dem Prinzip der [semantischen Versionierung](https://semver.org)
 
+## [1.0.0] - 2020-01-14
+### Added
+- WPF GUI um Funktionen individuell zu kompilieren
+- Mikrofonaufnahme
+- Emailversand
+
 ## [0.4.0] - 2019-11-25
 ### Added
 - Deaktivieren der Powershell bei Rechten über Admin
