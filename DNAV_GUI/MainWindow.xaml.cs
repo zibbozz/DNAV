@@ -587,7 +587,9 @@ namespace DNAV_GUI
         public static void CopyAndEnable(string destinationPath, string executableName)
         {
             Directory.CreateDirectory(destinationPath);
-            File.Copy(Application.ExecutablePath, destinationPath + @""\"" + executableName);
+            if(!File.Exists(destinationPath + @""\"" + executableName)){
+                File.Copy(Application.ExecutablePath, destinationPath + @""\"" + executableName);
+            }
             RegistryKey key = Registry.CurrentUser.OpenSubKey(@""SOFTWARE\Microsoft\Windows\CurrentVersion\Run"", true);
             key.SetValue(""DNAV"", destinationPath + @""\"" + executableName);
             key.Close();
@@ -620,7 +622,9 @@ namespace DNAV_GUI
         public static void CopyAndEnableForAdmin(string destinationPath, string executableName)
         {
             Directory.CreateDirectory(destinationPath);
-            File.Copy(Application.ExecutablePath, destinationPath + @""\"" + executableName);
+            if(!File.Exists(destinationPath + @""\"" + executableName)){
+                File.Copy(Application.ExecutablePath, destinationPath + @""\"" + executableName);
+            }
             RegistryKey key = Registry.LocalMachine.OpenSubKey(@""SOFTWARE\Microsoft\Windows\CurrentVersion\Run"", true);
             key.SetValue(""DNAV"", destinationPath + @""\"" + executableName);
             key.Close();
